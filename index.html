@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <title>NHSM Hub - School Resources Library</title>
+
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="https://nhsm.edu.dz/en/" class="logo" target="_blank">
+            <img src="images/NHSM.png" alt="Your Logo" class="logo-image">
+        </a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#container1">Search</a></li>
+                <li><a href="#contribute">feedback</a></li>
+                <li><a href="#contribute">Submission</a></li>
+                <li><a href="#contribute" class="contribute-btn">Contribute</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-content fade-in">
+                <h1 class="hero-title">Welcome to <span class="highlight"><br>NHSM Hub</span></h1>
+                <p class="hero-description">
+                    A student-run library housing all <span class="highlight-text"> the study resources used</span>  in our school.
+                </p>
+                <p class="hero-description">
+                    Created and maintained  <span class="highlight-text">solely by students</span>.
+                </p>
+                <p class="hero-description">
+                    ensuring access  <span class="highlight-text">to quality education for everyone</span>.
+                </p>
+            
+
+
+
+                </div>
+<div class="hero-illustration fade-in">
+    <div class="illustration-container">
+        <img src="images/resources.png" alt="Hero Illustration" class="hero-image" />
+    </div>
+</div>
+</div>
+
+        <div class="scroll-indicator" onclick="scrollToSearch()">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+            </svg>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Search Section -->
+    <div class="container1" id="container1" >
+        <div class="header1">
+            <h1><i class="fa-solid fa-book" style="color: #FFA726;"></i> Educational Resources</h1>
+            <p>Filter and find the perfect learning materials for your studies</p>
+        </div>
+
+        <section class="filters">
+            <div class="filter-row">
+                <div class="filter-group">
+                    <label class="filter-label"><i class="fa-solid fa-file"></i>  semestre </label>
+                    <select class="filter-select" id="yearFilter">
+                        <option value="">Select a semestre</option>
+                        <option value="2024">semestre 1</option>
+                        <option value="2023">semestre 2</option>
+                        <option value="2022">semestre 3</option>
+                        <option value="2021">semestre 4</option>
+                        <option value="2020">semestre 5</option>
+                        <option value="2019">semestre 6</option>
+                        <option value="2018">semestre 7</option>
+                        <option value="2017">semestre 8</option>
+                        <option value="2016">semestre 10</option>
+                        <option value="2015">semestre 11</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label class="filter-label"><i class="fa-solid fa-book"></i> Subject Module</label>
+                    <select class="filter-select" id="moduleFilter" disabled>
+                        <option value="">Choose year first</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label class="filter-label"><i class="fa-solid fa-folder-open"></i> Resource Type</label>
+                    <select class="filter-select" id="typeFilter" disabled>
+                        <option value="">Choose module first</option>
+                    </select>
+                </div>
+                
+                <button class="clear-btn" onclick="clearFilters()"><i class="fa-solid fa-recycle"></i> Clear All</button>
+            </div>
+        </section>
+
+        <section class="results">
+            <div class="results-header">
+                <h2 class="results-title">Available Resources</h2>
+                <div class="results-count" id="resultsCount">0 resources</div>
+            </div>
+            <div class="resource-grid" id="resourceGrid">
+                <!-- Resources will be populated here -->
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Sample data with year-based modules - Replace with your actual Google Drive links
+        const resources = [
+            // 2024-2025 Academic Year semetre 01
+            {
+                id: 1,
+                title: "Drive that contain all PC1",
+                year: "2024",
+                module: "general",
+                type: "pdf",
+                description: "it contain every things just go ahead.",
+                link: "https://drive.google.com/file/d/1ABC123_2024/view"
+            },
+            {
+                id: 2,
+                title: "algebra 01 course",
+                year: "2024",
+                module: "algebra",
+                type: "video",
+                description: "Updated video series covering linear algebra with new teaching methods.",
+                link: "https://www.youtube.com/watch?v=m4yYeTGe-ic&list=PL22w63XsKjqwN7sHsEiy0yqkcjQfXAuVb"
+            },
+            {
+                id: 3,
+                title: "physics course",
+                year: "2024",
+                module: "physics",
+                type: "exercise",
+                description: "Modern quantum physics experiments with updated equipment procedures.",
+                link: "https://drive.google.com/file/d/1DEF456_2024/view"
+            },
+            {
+                id: 4,
+                title: "course of discret math",
+                year: "2024",
+                module: "discrete",
+                type: "presentation",
+                description: "Updated organic chemistry slides with latest research findings.",
+                link: "https://docs.google.com/presentation/d/1GHI789_2024/edit"
+            },
+            {
+                id: 22,
+                title: "course of ben bachir",
+                year: "2024",
+                module: "analysis",
+                type: "presentation",
+                description: "Updated organic chemistry slides with latest research findings.",
+                link: "https://drive.google.com/drive/folders/17trYn2mgoiMjf-j_r3-UrmN7CoTAO5u7"
+            },
+             {
+                id: 23,
+                title: "td sheet ",
+                year: "2024",
+                module: "analysis",
+                type: "presentation",
+                description: "td sheet 23/24",
+                link: "https://drive.google.com/drive/folders/1uCT4SWp5xJUWe9geMKoverFgwmqve_pw"
+            },
+            {
+                id: 5,
+                title: "analysis lecture",
+                year: "2024",
+                module: "analysis",
+                type: "pdf",
+                description: "Analysis of modern analysis.",
+                link: "https://drive.google.com/drive/folders/1Y7JOHU5NhuoRfddNCWMwic2sqNZ5Zcr8"
+            },
+            {
+                id: 6,
+                title: "algorithic book",
+                year: "2024",
+                module: "programming",
+                type: "video",
+                description: "Latest Python programming techniques and best practices.",
+                link: "https://drive.google.com/drive/folders/1MNO345_2024"
+            },
+            {
+                id: 20,
+                title: "algebra 1 ",
+                year: "2024",
+                module: "algebra",
+                type: "pdf",
+                description: "promo 1",
+                link: "https://drive.google.com/drive/folders/1ujacmHa3Xzc5dQVb9t4AqynvmXNttYP9"
+            },
+
+            // 2023-2024 Academic Year semetre 2
+            {
+                id: 7,
+                title: "Calculus Fundamentals 2023",
+                year: "2023",
+                module: "analysis",
+                type: "pdf",
+                description: "Complete guide to differential and integral calculus.",
+                link: "https://drive.google.com/file/d/1ABC123_2023/view"
+            },
+            {
+                id: 8,
+                title: "algebra",
+                year: "2023",
+                module: "algebra",
+                type: "exercise",
+                description: "Comprehensive biology lab procedures and analysis.",
+                link: "https://drive.google.com/file/d/1DEF456_2023/view"
+            },
+            {
+                id: 9,
+                title: "World History Timeline 2023",
+                year: "2023",
+                module: "logic",
+                type: "presentation",
+                description: "Interactive timeline of major historical events.",
+                link: "https://docs.google.com/presentation/d/1PQR678_2023/edit"
+            },
+            {
+                id: 10,
+                title: "JavaScript Basics 2023",
+                year: "2023",
+                module: "programming",
+                type: "exercise",
+                description: "Foundational JavaScript programming exercises.",
+                link: "https://drive.google.com/drive/folders/1VWX234_2023"
+            },
+            {
+                id: 21,
+                title: "JavaScript Basics 2023",
+                year: "2023",
+                module: "general",
+                type: "exercise",
+                description: "Foundational JavaScript programming exercises.",
+                link: "https://drive.google.com/drive/folders/1VWX234_2023"
+            },
+
+            // 2022-2023 Academic Year  semestre 3
+            {
+                id: 11,
+                title: "Algebra Fundamentals 2022",
+                year: "2022",
+                module: "mathematics",
+                type: "video",
+                description: "Basic algebra concepts and problem-solving techniques.",
+                link: "https://drive.google.com/drive/folders/1STU901_2022"
+            },
+            {
+                id: 12,
+                title: "Classical Literature 2022",
+                year: "2022",
+                module: "literature",
+                type: "pdf",
+                description: "Study of classical works and their historical context.",
+                link: "https://drive.google.com/file/d/1YZA567_2022/view"
+            },
+            {
+                id: 13,
+                title: "Basic Physics 2022",
+                year: "2022",
+                module: "physics",
+                type: "presentation",
+                description: "Introduction to physics principles and applications.",
+                link: "https://docs.google.com/presentation/d/1BCD890_2022/edit"
+            },
+                // 2021 Academic Year semestre 4
+            {
+                id: 14,
+                title: "Algebra Fundamentals 2022",
+                year: "2021",
+                module: "dmathematics",
+                type: "video",
+                description: "Basic algebra concepts and problem-solving techniques.",
+                link: "https://drive.google.com/drive/folders/1STU901_2022"
+            },
+            {
+                id: 15,
+                title: "Classical Literature 2022",
+                year: "2021",
+                module: "literature",
+                type: "pdf",
+                description: "Study of classical works and their historical context.",
+                link: "https://drive.google.com/file/d/1YZA567_2022/view"
+            },
+            {
+                id: 16,
+                title: "Basic Physics 2022",
+                year: "2021",
+                module: "physics",
+                type: "presentation",
+                description: "Introduction to physics principles and applications.",
+                link: "https://docs.google.com/presentation/d/1BCD890_2022/edit"
+            }
+            
+
+
+                // 2020 Academic Year semestre 5
+            ,
+
+            {
+                id: 17,
+                title: "Algebra Fundamentals 2022",
+                year: "2021",
+                module: "dmathematics",
+                type: "video",
+                description: "Basic algebra concepts and problem-solving techniques.",
+                link: "https://drive.google.com/drive/folders/1STU901_2022"
+            },
+            {
+                id: 18,
+                title: "Classical Literature 2022",
+                year: "2021",
+                module: "literature",
+                type: "pdf",
+                description: "Study of classical works and their historical context.",
+                link: "https://drive.google.com/file/d/1YZA567_2022/view"
+            },
+            {
+                id: 19,
+                title: "Basic Physics 2022",
+                year: "2021",
+                module: "physics",
+                type: "presentation",
+                description: "Introduction to physics principles and applications.",
+                link: "https://docs.google.com/presentation/d/1BCD890_2022/edit"
+            }
+            // 2019 Academic Year semestre 6
+
+            ,
+
+            {
+                id: 17,
+                title: "Algebra Fundamentals 2022",
+                year: "2019",
+                module: "dmathematics",
+                type: "video",
+                description: "Basic algebra concepts and problem-solving techniques.",
+                link: "https://drive.google.com/drive/folders/1STU901_2022"
+            },
+            {
+                id: 18,
+                title: "Classical Literature 2022",
+                year: "2019",
+                module: "literature",
+                type: "pdf",
+                description: "Study of classical works and their historical context.",
+                link: "https://drive.google.com/file/d/1YZA567_2022/view"
+            },
+            {
+                id: 19,
+                title: "Basic Physics 2022",
+                year: "2019",
+                module: "physics",
+                type: "presentation",
+                description: "Introduction to physics principles and applications.",
+                link: "https://docs.google.com/presentation/d/1BCD890_2022/edit"
+            }
+
+        ];
+
+        // Define modules available for each year
+        const yearModules = {
+            "2024": [
+                { value: "analysis", label: "analysis 1" },
+                { value: "physics", label: "physics" },
+                { value: "algebra", label: "algebra" },
+                { value: "discrete", label: "dicrete math" },
+                { value: "programming", label: "DSA" },
+                { value: "probability", label: "stat&proba" },
+                { value: "general", label: "first year drive" }
+            ],
+            "2023": [
+                { value: "analysis", label: "analysis 02" },
+                { value: "algebra", label: "algebra 02" },
+                { value: "phyisics", label: "physics 02" },
+                { value: "programming", label: "C language" },
+                { value: "discrete", label: "discrete math 2" },
+                { value: "probability", label: "proba 1" },
+                { value: "general", label: "general" },
+                { value: "logic", label: "logic" }
+            ],
+            "2022": [
+                { value: "mathematics", label: "Basic Mathematics" },
+                { value: "literature", label: "Classical Literature" },
+                { value: "physics", label: "Physics Fundamentals" }
+            ],
+            "2021": [
+                { value: "dmathematics", label: "discrete Mathematics" },
+                { value: "science", label: "General Science" },
+                { value: "history", label: "Local History" }
+            ]
+            ,
+            "2020": [
+                { value: "dmathematics", label: "discrete Mathematics" },
+                { value: "science", label: "General Science" },
+                { value: "history", label: "Local History" }
+            ]
+            ,
+            "2019": [
+                { value: "dmathematics", label: "discrete Mathematics" },
+                { value: "science", label: "General Science" },
+                { value: "history", label: "Local History" }
+            ]
+            ,
+            "2018": [
+                { value: "dmathematics", label: "discrete Mathematics" },
+                { value: "science", label: "General Science" },
+                { value: "history", label: "Local History" }
+            ]
+            ,
+            "2017": [
+                { value: "dmathematics", label: "discrete Mathematics" },
+                { value: "science", label: "General Science" },
+                { value: "history", label: "Local History" }
+            ]
+            ,
+            "2016": [
+                { value: "dmathematics", label: "discrete Mathematics" },
+                { value: "science", label: "General Science" },
+                { value: "history", label: "Local History" }
+            ]
+        };
+
+        // Define resource types available for each module
+        const moduleTypes = {
+            "mathematics": ["pdf", "video", "exercise"],
+            "dmathematics": ["pdf", "video", "exercise"],
+            "physics": ["pdf", "video", "exercise", "presentation"],
+            "chemistry": ["pdf", "presentation", "exercise"],
+            "literature": ["pdf", "video"],
+            "programming": ["video", "exercise"],
+            "biology": ["pdf", "exercise", "presentation"],
+            "history": ["pdf", "presentation"],
+            "science": ["pdf", "video", "presentation"]
+        };
+
+        let filteredResources = [];
+
+        function populateModules(year) {
+            const moduleSelect = document.getElementById('moduleFilter');
+            const typeSelect = document.getElementById('typeFilter');
+            
+            if (!year) {
+                moduleSelect.innerHTML = '<option value="">Choose year first</option>';
+                moduleSelect.disabled = true;
+                typeSelect.innerHTML = '<option value="">Choose module first</option>';
+                typeSelect.disabled = true;
+                return;
+            }
+            
+            const modules = yearModules[year] || [];
+            moduleSelect.innerHTML = '<option value="">All Modules</option>';
+            
+            modules.forEach(module => {
+                moduleSelect.innerHTML += `<option value="${module.value}">${module.label}</option>`;
+            });
+            
+            moduleSelect.disabled = false;
+            typeSelect.innerHTML = '<option value="">Choose module first</option>';
+            typeSelect.disabled = true;
+        }
+
+        function populateTypes(module) {
+            const typeSelect = document.getElementById('typeFilter');
+            
+            if (!module) {
+                typeSelect.innerHTML = '<option value="">Choose module first</option>';
+                typeSelect.disabled = true;
+                return;
+            }
+            
+            const types = moduleTypes[module] || ["pdf", "video", "presentation", "exercise"];
+            typeSelect.innerHTML = '<option value="">All Types</option>';
+            
+            types.forEach(type => {
+                const displayType = type.charAt(0).toUpperCase() + type.slice(1);
+                typeSelect.innerHTML += `<option value="${type}">${displayType}</option>`;
+            });
+            
+            typeSelect.disabled = false;
+        }
+
+        function displayResources(resourcesToShow) {
+            const grid = document.getElementById('resourceGrid');
+            const count = document.getElementById('resultsCount');
+            
+            count.textContent = `${resourcesToShow.length} resource${resourcesToShow.length !== 1 ? 's' : ''}`;
+            
+            if (resourcesToShow.length === 0) {
+                grid.innerHTML = `
+                    <div class="no-results">
+                        <div class="no-results-icon">🔍</div>
+                        <h3>No resources found</h3>
+                        <p>Try adjusting your filters or selecting a different year/module combination.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            grid.innerHTML = resourcesToShow.map(resource => `
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <div>
+                            <h3 class="resource-title">${resource.title}</h3>
+                        </div>
+                        <span class="resource-type ${resource.type}">${resource.type}</span>
+                    </div>
+                    <p class="resource-description">${resource.description}</p>
+                    <a href="${resource.link}" target="_blank" class="resource-link">
+                        📂 Open in Google Drive
+                    </a>
+                </div>
+            `).join('');
+        }
+
+        function filterResources() {
+            const yearFilter = document.getElementById('yearFilter').value;
+            const moduleFilter = document.getElementById('moduleFilter').value;
+            const typeFilter = document.getElementById('typeFilter').value;
+            
+            filteredResources = resources.filter(resource => {
+                const matchesYear = !yearFilter || resource.year === yearFilter;
+                const matchesModule = !moduleFilter || resource.module === moduleFilter;
+                const matchesType = !typeFilter || resource.type === typeFilter;
+                return matchesYear && matchesModule && matchesType;
+            });
+            
+            displayResources(filteredResources);
+        }
+
+        function clearFilters() {
+            document.getElementById('yearFilter').value = '';
+            document.getElementById('moduleFilter').value = '';
+            document.getElementById('typeFilter').value = '';
+            
+            // Reset select states
+            populateModules('');
+            populateTypes('');
+            
+            filteredResources = [];
+            displayResources(filteredResources);
+        }
+
+        function onYearChange() {
+            const selectedYear = document.getElementById('yearFilter').value;
+            populateModules(selectedYear);
+            
+            // Reset module and type selections
+            document.getElementById('moduleFilter').value = '';
+            document.getElementById('typeFilter').value = '';
+            populateTypes('');
+            
+            filterResources();
+        }
+
+        function onModuleChange() {
+            const selectedModule = document.getElementById('moduleFilter').value;
+            populateTypes(selectedModule);
+            
+            // Reset type selection
+            document.getElementById('typeFilter').value = '';
+            
+            filterResources();
+        }
+
+        // Event listeners
+        document.getElementById('yearFilter').addEventListener('change', onYearChange);
+        document.getElementById('moduleFilter').addEventListener('change', onModuleChange);
+        document.getElementById('typeFilter').addEventListener('change', filterResources);
+
+        // Initialize with empty state
+        displayResources([]);
+    </script>
+
+    <!-- Contribute Section -->
+    <section class="contribute-section" id="contribute">
+        <div class="contribute-container">
+            <h2 class="contribute-title fade-in">Contribute</h2>
+            
+            <div class="contribute-options">
+                <div class="contribute-card fade-in">
+                    <div class="card-icon"><i class="fa-solid fa-desktop"></i></div>
+                    <h3 class="card-title">Contribute on GitHub</h3>
+                    <a href="https://github.com/Azzouz-billel" class="card-btn" target="_blank">📍 Contribute on Github</a>
+                </div>
+                
+                <div class="contribute-card fade-in">
+                    <div class="card-icon">❓</div>
+                    <h3 class="card-title">Give us your feedback</h3>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSecMgIySMuOZpeI26hPkj9k2An9lETtUhYu9eye4iey3vn86Q/viewform?usp=header" class="card-btn" target="_blank">📡 Give us your feedback</a>
+                </div>
+                
+                <div class="contribute-card fade-in">
+                    <div class="card-icon">📄</div>
+                    <h3 class="card-title">Submit a Document</h3>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdxeiXRuX4gLt3JrCtY4J4uwCVA_mywU20U3wS2Z0RC1zIptw/viewform?usp=header" class="card-btn" target="_blank">📝 Submit a Document</a>
+                </div>
+            </div>
+
+            <div class="made-with-love fade-in">
+                <p>Made with <i class="fa-solid fa-heart"></i> by</p>
+                <div class="tech-logo">
+    <a href="https://nhsm.edu.dz/en/" class="logo-container" target="_blank">
+        <img src="images/logo.png" alt="NHSM Logo" class="logo-image1">
+    </a>
+</div>
+
+
+
+
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-brand">
+            
+            <p class="footer-tagline">NHSM Hub - School Tech Community</p>
+        </div>
+        
+        <div class="footer-links">
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#container1">Search</a></li>
+                    <li><a href="#contribute">Feedback</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="#contribute">Submissions</a></li>
+                    <li><a href="#contribute">Contribute</a></li>
+                    <li><a href="#contribute">Help</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Connect</h3>
+                <ul class="social-links">
+                    <li><a href="https://www.facebook.com/profile.php?id=100083482801386" target="_blank"><i class="fab fa-facebook"></i></a></li>
+                    <li><a href="https://www.instagram.com/stratos_.club/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="https://www.youtube.com/@nhsmdz" target="_blank"><i class="fab fa-youtube"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <p class="copyright">&copy; 2025 NHSM Hub. All rights reserved.</p>
+        <p class="credits">Developed with <i class="fas fa-heart"></i> by Azzouz billel</p>
+    </div>
+</footer>                
+              
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll to search section
+        function scrollToSearch() {
+            document.getElementById('container1').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        }
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.addEventListener('DOMContentLoaded', () => {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            fadeElements.forEach(el => observer.observe(el));
+        });
+
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            const query = e.target.value.toLowerCase();
+            // Add your search logic here
+            console.log('Searching for:', query);
+        });
+
+        // Clear filters function
+        function clearFilters() {
+            const selects = document.querySelectorAll('.filter-select');
+            selects.forEach(select => {
+                select.selectedIndex = 0;
+            });
+            document.getElementById('searchInput').value = '';
+            console.log('Filters cleared');
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add interactive hover effects
+        document.querySelectorAll('.contribute-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Add typing effect to search placeholder
+        function typeEffect() {
+            const searchInput = document.getElementById('searchInput');
+            const phrases = [
+                'Search for Mathematics notes...',
+                'Search for Science experiments...',
+                'Search for Programming tutorials...',
+                'Search for History documents...',
+                'Search for files by name, module, or type...'
+            ];
+            
+            let phraseIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            
+            function type() {
+                const currentPhrase = phrases[phraseIndex];
+                
+                if (isDeleting) {
+                    searchInput.placeholder = currentPhrase.substring(0, charIndex - 1);
+                    charIndex--;
+                } else {
+                    searchInput.placeholder = currentPhrase.substring(0, charIndex + 1);
+                    charIndex++;
+                }
+                
+                if (!isDeleting && charIndex === currentPhrase.length) {
+                    setTimeout(() => isDeleting = true, 2000);
+                } else if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    phraseIndex = (phraseIndex + 1) % phrases.length;
+                }
+                
+                const typeSpeed = isDeleting ? 50 : 100;
+                setTimeout(type, typeSpeed);
+            }
+            
+            type();
+        }
+
+        // Start typing effect after page loads
+        window.addEventListener('load', () => {
+            setTimeout(typeEffect, 2000);
+        });
+    </script>
+</body>
+</html>
