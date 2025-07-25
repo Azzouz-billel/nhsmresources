@@ -1,0 +1,2304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <title>NHSM Hub - School Resources Library</title>
+
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="https://nhsm.edu.dz/en/" class="logo" target="_blank">
+            <img src="images/NHSM.png" alt="Your Logo" class="logo-image">
+        </a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#container1">Search</a></li>
+                <li><a href="#contribute">feedback</a></li>
+                <li><a href="#contribute">Submission</a></li>
+                <li><a href="#contribute" class="contribute-btn">Contribute</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-content fade-in">
+                <h1 class="hero-title">Welcome to <span class="highlight"><br>NHSM Hub</span></h1>
+                <p class="hero-description">
+                    A student-run library housing all <span class="highlight-text"> the study resources used</span>  in our school.
+                </p>
+                <p class="hero-description">
+                    Created and maintained  <span class="highlight-text">solely by students</span>.
+                </p>
+                <p class="hero-description">
+                    ensuring access  <span class="highlight-text">to quality education for everyone</span>.
+                </p>
+            
+
+
+
+                </div>
+<div class="hero-illustration fade-in">
+    <div class="illustration-container">
+        <img src="images/resources.png" alt="Hero Illustration" class="hero-image" />
+    </div>
+</div>
+</div>
+
+        <div class="scroll-indicator" onclick="scrollToSearch()">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+            </svg>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Search Section -->
+    <div class="container1" id="container1" >
+        <div class="header1">
+            <h1><i class="fa-solid fa-book" style="color: #FFA726;"></i> Educational Resources</h1>
+            <p>Filter and find the perfect learning materials for your studies</p>
+        </div>
+
+        <section class="filters">
+            <div class="filter-row">
+                <div class="filter-group">
+                    <label class="filter-label"><i class="fa-solid fa-file"></i>  semestre </label>
+                    <select class="filter-select" id="yearFilter">
+                        <option value="">Select a semestre</option>
+                        <option value="2024">semestre 1</option>
+                        <option value="2023">semestre 2</option>
+                        <option value="2022">semestre 3</option>
+                        <option value="2021">semestre 4</option>
+                        <option value="2020">semestre 5</option>
+                        <option value="2019">semestre 6</option>
+                        <option value="2018">semestre 7 ms</option>
+                        <option value="2017">semestre 8 ms</option>
+                        <option value="2016">semestre 7 cs</option>
+                        <option value="2015">semestre 8 cs</option>
+                        <option value="2014">semestre 7 ds</option>
+                        <option value="2013">semestre 8 ds</option>
+                        <option value="2012">semestre 10</option>
+                        <option value="2011">semestre 11</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label class="filter-label"><i class="fa-solid fa-book"></i> Subject Module</label>
+                    <select class="filter-select" id="moduleFilter" disabled>
+                        <option value="">Choose year first</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label class="filter-label"><i class="fa-solid fa-folder-open"></i> Resource Type</label>
+                    <select class="filter-select" id="typeFilter" disabled>
+                        <option value="">Choose module first</option>
+                    </select>
+                </div>
+                
+                <button class="clear-btn" onclick="clearFilters()"><i class="fa-solid fa-recycle"></i> Clear All</button>
+            </div>
+        </section>
+
+        <section class="results">
+            <div class="results-header">
+                <h2 class="results-title">Available Resources</h2>
+                <div class="results-count" id="resultsCount">0 resources</div>
+            </div>
+            <div class="resource-grid" id="resourceGrid">
+                <!-- Resources will be populated here -->
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Sample data with year-based modules - Replace with your actual Google Drive links
+        const resources = [
+            // 2024-2025 Academic Year semetre 01
+            {
+                id: 1,
+                title: "Drive that contain all PC1",
+                year: "2024",
+                module: "general",
+                type: "pdf",
+                description: "it contain every thing, just go ahead.",
+                link: "https://drive.google.com/drive/folders/1uiWw0z4QStHH1QQJhwsB1o6zsf8BSn5x"
+            },
+            {
+                id: 2,
+                title: "algebra 01 course",
+                year: "2024",
+                module: "algebra",
+                type: "video",
+                description: "Updated video series covering linear algebra with new teaching methods.",
+                link: "https://www.youtube.com/watch?v=m4yYeTGe-ic&list=PL22w63XsKjqwN7sHsEiy0yqkcjQfXAuVb"
+            },
+            {
+                id: 3,
+                title: "physics course",
+                year: "2024",
+                module: "physics",
+                type: "exercise",
+                description: "A comprehensive lecture that breaks down core physics concepts with clear explanations, real-world examples",
+                link: "https://drive.google.com/file/d/1DEF456_2024/view"
+            },
+            {
+                id: 4,
+                title: "course of discrete math",
+                year: "2024",
+                module: "discrete",
+                type: "presentation",
+                description: "A focused lecture on essential topics in discrete mathematics with clear explanations.",
+                link: "https://docs.google.com/presentation/d/1GHI789_2024/edit"
+            },
+            {
+                id: 22,
+                title: "course of ben bachir",
+                year: "2024",
+                module: "analysis",
+                type: "presentation",
+                description: "A detailed lecture by Mr. Ben Bachir covering core concepts in real analysis with clarity.",
+                link: "https://drive.google.com/drive/folders/17trYn2mgoiMjf-j_r3-UrmN7CoTAO5u7"
+            },
+             {
+                id: 23,
+                title: "td sheet analysis ",
+                year: "2024",
+                module: "analysis",
+                type: "presentation",
+                description: "Practice problems and solutions to strengthen your understanding of analysis concepts.",
+                link: "https://drive.google.com/drive/folders/1uCT4SWp5xJUWe9geMKoverFgwmqve_pw"
+            },
+            {
+                id: 5,
+                title: "analysis lecture",
+                year: "2024",
+                module: "analysis",
+                type: "pdf",
+                description: "A clear and structured lecture covering fundamental topics in analysis..",
+                link: "https://drive.google.com/drive/folders/1Y7JOHU5NhuoRfddNCWMwic2sqNZ5Zcr8"
+            },
+            {
+                id: 6,
+                title: "algorithmic videos",
+                year: "2024",
+                module: "programming",
+                type: "video",
+                description: "A hands-on video exploring key programming concepts through practical examples.",
+                link: "https://www.youtube.com/watch?v=HQJPFx9Yrpw&list=PLZpzLuUp9qXxUmAReVaGJhz_DmTCZ5FVV"
+            },
+            {
+                id: 20,
+                title: "algebra 1 lecture",
+                year: "2024",
+                module: "algebra",
+                type: "pdf",
+                description: "Introductory lecture for Promo 1 covering the basics of algebra in a clear and structured way.",
+                link: "https://drive.google.com/drive/folders/1ujacmHa3Xzc5dQVb9t4AqynvmXNttYP9"
+            },
+            {
+                id: 23,
+                title: "algebra 1 lecture",
+                year: "2024",
+                module: "algebra",
+                type: "pdf",
+                description: "Introductory lecture for Promo 2&3 covering the basics of algebra in a clear and structured way.",
+                link: "https://drive.google.com/drive/folders/1Kgq6I9l4PrQsN3hxr5Dw97GO_mz-Qkr7"
+            },
+            {
+                id: 24,
+                title: "algebra 1 exams",
+                year: "2024",
+                module: "algebra",
+                type: "pdf",
+                description: "Introductory lecture for all promotion covering the basics of algebra in a clear and structured way.",
+                link: "https://drive.google.com/drive/folders/1EjdmuPxYDF-KR0xVWAOIlBI4QblLMzgi"
+            },
+            {
+                id: 25,
+                title: "worksheet",
+                year: "2024",
+                module: "algebra",
+                type: "pdf",
+                description: "First set of algebra exercises for Promo 1, designed to build foundational problem-solving skills.",
+                link: "https://drive.google.com/drive/folders/1CwaKGxSsNHeidf9w8XvFNOUU0moQI5pO"
+            },
+            {
+                id: 26,
+                title: "worksheet analysis",
+                year: "2024",
+                module: "analysis",
+                type: "pdf",
+                description: "First set of algebra exercises for Promo 1,2,3, designed to build foundational problem-solving skills.",
+                link: "https://drive.google.com/drive/folders/1Hhx962Wpiel3nF3Ipls1ZXU8T6Lp7qP8"
+            },
+            {
+                id: 27,
+                title: "exams of analysis",
+                year: "2024",
+                module: "analysis",
+                type: "pdf",
+                description: "exams of promotion 1,2,3",
+                link: "https://drive.google.com/drive/folders/1qIZNT1ngttjMiNZshdxXu-I_x49JskGR"
+            },
+            {
+                id: 28,
+                title: "lecture of analysis",
+                year: "2024",
+                module: "analysis",
+                type: "pdf",
+                description: "lecture of analysis promo 1,2,3",
+                link: "https://drive.google.com/drive/folders/1ENEsKy0rET5lTrCxtkmHDpjZlgV6MSkc"
+            },
+            
+            {
+                id: 29,
+                title: "worksheet Dm",
+                year: "2024",
+                module: "discrete",
+                type: "pdf",
+                description: "worksheet promo1,2,3",
+                link: "https://drive.google.com/drive/folders/1y4h7m1EznTdhgUCMLlwQ39io8NVXazMG"
+            },
+            {
+                id: 30,
+                title: "exams Dm",
+                year: "2024",
+                module: "discrete",
+                type: "pdf",
+                description: "exams promo 2",
+                link: "https://drive.google.com/drive/folders/1NMYDTsP4ZbZOSJldv46q-0OMRi33YYQf"
+            },
+            {
+                id: 31,
+                title: "lecture Dm",
+                year: "2024",
+                module: "discrete",
+                type: "pdf",
+                description: "lecture promo2",
+                link: "https://drive.google.com/drive/folders/1fr_Qhkp7kX87fjbYlNPJ1y0vW-qF59Ly"
+            },
+            {
+                id: 32,
+                title: "worksheet",
+                year: "2024",
+                module: "physics",
+                type: "pdf",
+                description: "worksheet promo2 ",
+                link: "https://drive.google.com/drive/folders/1gu302MhHFGYG5hZ-JAsuagOges5vJxIy"
+            },
+            {
+                id: 33,
+                title: "exams",
+                year: "2024",
+                module: "physics",
+                type: "pdf",
+                description: "exams promo3",
+                link: "https://drive.google.com/drive/folders/1sB-W9J3LlyiId8dbkGfqzSmk9Wxhdaq0"
+            },
+            {
+                id: 34,
+                title: "lecture",
+                year: "2024",
+                module: "physics",
+                type: "pdf",
+                description: "lecture promo 3",
+                link: "https://drive.google.com/drive/folders/1M2xmZvRk61ggHnw28jxpOJvx6sPlo-f5"
+            },
+            {
+    id: 35,
+    title: "exam",
+    year: "2024",
+    module: "programming",
+    type: "pdf",
+    description: "Latest c programming techniques and best practices.",
+    link: "https://drive.google.com/drive/folders/1PYVhuhkAoCYzKJn4WUTiYoYcrv-_hM8S"
+},
+{
+    id: 36,
+    title: "lecture",
+    year: "2024",
+    module: "programming",
+    type: "pdf",
+    description: "Latest c programming techniques and best practices.",
+    link: "https://drive.google.com/drive/folders/1gpyBrm6JU2tjysDVPBEyVO27aqKKJnlG"
+},
+{
+    id: 37,
+    title: "worksheet",
+    year: "2024",
+    module: "programming",
+    type: "pdf",
+    description: "Latest c programming techniques and best practices.",
+    link: "https://drive.google.com/drive/folders/1u60oGYmF_L6jWmblunQV24ygFQTs-zMt"
+},
+{
+    id: 38,
+    title: "exam",
+    year: "2024",
+    module: "probability",
+    type: "pdf",
+    description: "A set of exam questions to assess your understanding of core probability concepts.",
+    link: "https://drive.google.com/drive/folders/1J2zO5ZNbCBWck22YwUK2VAI_SzojBzlr"
+},
+{
+    id: 39,
+    title: "lecture",
+    year: "2024",
+    module: "probability",
+    type: "pdf",
+    description: "An engaging lecture explaining key probability principles with clear examples.",
+    link: "https://drive.google.com/drive/folders/1DCX1Y6C52Y1xGslXfjNXB_U0ZXpNBYkc"
+},
+{
+    id: 40,
+    title: "worksheet",
+    year: "2024",
+    module: "probability",
+    type: "pdf",
+    description: "Exercises and guided solutions to reinforce probability theory and applications.",
+    link: "https://drive.google.com/drive/folders/18EggIcDJ7CQ6Ha7kv-TlZvSU2SkrvBEo"
+}
+,
+            // 2023-2024 Academic Year semetre 2
+           {
+    id: 41,
+    title: "exam",
+    year: "2023",
+    module: "analysis",
+    type: "pdf",
+    description: "Final exam focused on series convergence, uniform continuity, and integration in real analysis.",
+    link: "https://drive.google.com/drive/folders/192iYuH4GKFPWlJJNRMSB0KxpC9mcwcs0"
+},
+{
+    id: 42,
+    title: "lecture",
+    year: "2023",
+    module: "analysis",
+    type: "pdf",
+    description: "Lecture notes breaking down the concept of limits, sequences, and the topology of ℝ in a simple way.",
+    link: "https://drive.google.com/drive/folders/1PRBtv45Zr0_kQkPnwwjqtaTtWC5K5lZX"
+},
+{
+    id: 7,
+    title: "lecture",
+    year: "2023",
+    module: "analysis",
+    type: "pdf",
+    description: "ben bachir lecture",
+    link: "https://drive.google.com/drive/folders/151ggZvJl5YQMG8C2Mow52T_2w3pOvYAx"
+},
+{
+    id: 43,
+    title: "worksheet",
+    year: "2023",
+    module: "analysis",
+    type: "pdf",
+    description: "Problem set on pointwise vs. uniform convergence, compactness, and continuity.",
+    link: "https://drive.google.com/drive/folders/1yOvY9uzAUdjDDMdDG88PUMy2oXjFFtOP"
+},
+
+{
+    id: 44,
+    title: "exam",
+    year: "2023",
+    module: "algebra",
+    type: "pdf",
+    description: "Linear algebra final covering vector spaces, eigenvalues, and diagonalization.",
+    link: "https://drive.google.com/drive/folders/19awwYv0ZS6JwTPFhAGOeg0vXocgm3U9f"
+},
+{
+    id: 45,
+    title: "lecture",
+    year: "2023",
+    module: "algebra",
+    type: "pdf",
+    description: "Group theory overview with real-life applications, symmetries, and cyclic groups.",
+    link: "https://drive.google.com/drive/folders/1sTyAcquaW7RfgI6a8tPJWP1QSPGqZbbL"
+},
+{
+    id: 46,
+    title: "worksheet",
+    year: "2023",
+    module: "algebra",
+    type: "pdf",
+    description: "Matrix manipulation exercises: Gauss-Jordan, rank, and kernel computations.",
+    link: "https://drive.google.com/drive/folders/1PN9qGaGc4u6nZpU_BDPr-ExaDxj0OSj8"
+},
+
+{
+    id: 47,
+    title: "exam",
+    year: "2023",
+    module: "discrete",
+    type: "pdf",
+    description: "Exam covering recurrence relations, propositional logic, and basic set theory.",
+    link: "https://drive.google.com/drive/folders/1PcgjAmXMQ7wFYUAeYJNCzdX_X-IOrdqT"
+},
+{
+    id: 48,
+    title: "lecture",
+    year: "2023",
+    module: "discrete",
+    type: "pdf",
+    description: "Introduction to graphs and trees, including real-world examples of networks.",
+    link: "https://drive.google.com/drive/folders/1taNAUqs5SYmzCtZKyHfZB2HcufrHCx_x"
+},
+{
+    id: 49,
+    title: "worksheet",
+    year: "2023",
+    module: "discrete",
+    type: "pdf",
+    description: "Challenging logic puzzles and proof strategies using induction and contradiction.",
+    link: "https://drive.google.com/drive/folders/1Pe8pWGbPKVowKPu24bwSmNsJKSMDDyE1"
+},
+
+{
+    id: 50,
+    title: "exam",
+    year: "2023",
+    module: "logic",
+    type: "pdf",
+    description: "Test on propositional and predicate logic, validity, and natural deduction.",
+    link: "https://drive.google.com/drive/folders/1CRjeNZhn3tZyCJmfTZyw7gNVEL4ei_wI"
+},
+{
+    id: 51,
+    title: "lecture",
+    year: "2023",
+    module: "logic",
+    type: "pdf",
+    description: "Detailed explanation of logical connectives, quantifiers, and formal proofs.",
+    link: "https://drive.google.com/drive/folders/1CYPRY78cE-4rzSY97FdrSaQaAVrJyb44"
+},
+{
+    id: 51,
+    title: "resources",
+    year: "2023",
+    module: "logic",
+    type: "pdf",
+    description: "resources",
+    link: "https://drive.google.com/drive/folders/12P19CIaYNY8LZCUJt3YDYzLKkhWGodYu"
+},
+
+{
+    id: 53,
+    title: "exam",
+    year: "2023",
+    module: "physics",
+    type: "pdf",
+    description: "Mechanics exam with projectile motion, energy conservation, and torque problems.",
+    link: "https://drive.google.com/drive/folders/1DJaONLowPWgXcnWtQhDSgYrF_W7aTJ6U"
+},
+{
+    id: 54,
+    title: "lecture",
+    year: "2023",
+    module: "physics",
+    type: "pdf",
+    description: "Conceptual lecture notes on thermodynamics and the laws of energy transfer.",
+    link: "https://drive.google.com/drive/folders/1hsKQwVzsGJTg6KipBoFyVsu19ke2j4-H"
+},
+{
+    id: 55,
+    title: "worksheet",
+    year: "2023",
+    module: "physics",
+    type: "pdf",
+    description: "Problem set covering motion equations, vectors, and force diagrams.",
+    link: "https://drive.google.com/drive/folders/1g6XpD9KfcyEv3my2Tl62qiNOqm9XQGqo"
+},
+
+{
+    id: 56,
+    title: "exam",
+    year: "2023",
+    module: "programming",
+    type: "pdf",
+    description: "Python exam testing loops, functions, file handling, and error debugging.",
+    link: "https://drive.google.com/drive/folders/1SVyiw27HcxY7TWuPmh3pLARIdpO7L4yp"
+},
+{
+    id: 57,
+    title: "lecture",
+    year: "2023",
+    module: "programming",
+    type: "pdf",
+    description: "Introduction to OOP in c with class examples, inheritance, and encapsulation.",
+    link: "https://drive.google.com/drive/folders/1lzs3Bu6uR7e9DJrMp1yAb3YJtIMjNiIY"
+},
+{
+    id: 58,
+    title: "worksheet",
+    year: "2023",
+    module: "programming",
+    type: "pdf",
+    description: "Coding challenges using recursion, dictionaries, and list comprehensions.",
+    link: "https://drive.google.com/drive/folders/15gRDTQydk0wIcCVxro1ztmzYy46SciFq"
+},
+
+{
+    id: 59,
+    title: "exam",
+    year: "2023",
+    module: "probability",
+    type: "pdf",
+    description: "Midterm exam on conditional probability, binomial distribution, and expected value.",
+    link: "https://drive.google.com/drive/folders/1EVDOy73Ol_qhfMdACpVEn5B7hyL5MLgP"
+},
+{
+    id: 60,
+    title: "lecture",
+    year: "2023",
+    module: "probability",
+    type: "pdf",
+    description: "Lecture notes exploring random variables, distributions, and independence.",
+    link: "https://drive.google.com/drive/folders/1zGfuo9_c5HBFaq0JYKJEgjK8aFxQKKC9"
+},
+{
+    id: 61,
+    title: "worksheet",
+    year: "2023",
+    module: "probability",
+    type: "pdf",
+    description: "Problem set on combinatorics, sample spaces, and expectation calculation.",
+    link: "https://drive.google.com/drive/folders/1Pw8FV4IlZUDX-o4hEKUpu2GjO8nZFsQU"
+},
+
+{
+    id: 61,
+    title: "sup exercices",
+    year: "2023",
+    module: "probability",
+    type: "pdf",
+    description: "Problem set on combinatorics, sample spaces, and expectation calculation.",
+    link: "https://drive.google.com/drive/folders/1KBl6oGxy-avG4ZKuoOImkkDxwcxSzXwZ"
+},
+
+{
+    id: 62,
+    title: "generalities promo 1",
+    year: "2023",
+    module: "general",
+    type: "pdf",
+    description: "Cross-topic quiz combining logic, algebra, and analysis in one comprehensive test.",
+    link: "https://drive.google.com/drive/folders/1MqpVIzF0Y4j4wSJWuKWbMDgtx4y6Ro17"
+}
+,
+
+            // 2022-2023 Academic Year  semestre 3
+            {
+    id: 65,
+    title: "exam",
+    year: "2022",
+    module: "topology",
+    type: "pdf",
+    description: "Exam on open and closed sets, limit points, and topological spaces with rigorous proofs.",
+    link: "https://drive.google.com/drive/u/1/folders/16AHapt2_kSedzLHsRPTkQfG4O3vx3xqf"
+},
+{
+    id: 66,
+    title: "lecture maktoub",
+    year: "2022",
+    module: "topology",
+    type: "pdf",
+    description: "Detailed lecture on metric spaces, continuity, and homeomorphisms with diagrams.",
+    link: "https://drive.google.com/drive/folders/1hcZ8URO5P8DyYN4-Y6VssuQUC07c1H6K"
+},
+{
+    id: 67,
+    title: "worksheet",
+    year: "2022",
+    module: "topology",
+    type: "pdf",
+    description: "Problem sheet focused on compactness, connectedness, and topological equivalence.",
+    link: "https://drive.google.com/drive/folders/1S8DExB0Um7MqvUtOAx3dBGHV_9IU85o6"
+},
+{
+    id: 11,
+    title: "resources",
+    year: "2022",
+    module: "topology",
+    type: "pdf",
+    description: "Problem sheet focused on compactness, connectedness, and topological equivalence.",
+    link: "https://drive.google.com/drive/folders/1Y-enNkfDwjoEcVikG2jg-6IXjeCO2k-7"
+},
+
+{
+    id: 68,
+    title: "exam",
+    year: "2022",
+    module: "geometry",
+    type: "pdf",
+    description: "Advanced geometry exam covering Euclidean transformations and affine geometry.",
+    link: "https://drive.google.com/drive/folders/1UwI6gymLTSuYJD-e5Y6pihXeoBvH39Rf"
+},
+{
+    id: 69,
+    title: "lecture",
+    year: "2022",
+    module: "geometry",
+    type: "pdf",
+    description: "Lecture exploring vector geometry, orthogonality, and conic sections.",
+    link: "https://drive.google.com/drive/folders/1SnSDcYglYxau35myMozAwb-B33ozudj6"
+},
+{
+    id: 69,
+    title: "books",
+    year: "2022",
+    module: "geometry",
+    type: "pdf",
+    description: "Lecture exploring vector geometry, orthogonality, and conic sections.",
+    link: "https://drive.google.com/drive/folders/1PFuIRFahdE23weBmY2s7rkQOwwrBJuqr"
+},
+{
+    id: 70,
+    title: "worksheet",
+    year: "2022",
+    module: "geometry",
+    type: "pdf",
+    description: "Exercises on projections, angles between planes, and parametric representations.",
+    link: "https://drive.google.com/drive/folders/1UzRIJqa887t4XwMpziuaMP03fb6iJvzm"
+},
+
+{
+    id: 71,
+    title: "exam",
+    year: "2022",
+    module: "numerical analysis",
+    type: "pdf",
+    description: "Midterm exam on numerical integration, interpolation, and error analysis.",
+    link: "https://drive.google.com/drive/folders/15_OSknC_JddNz9i-UUVk_Zu3ZCQhL0Jd"
+},
+{
+    id: 72,
+    title: "lecture",
+    year: "2022",
+    module: "numerical analysis",
+    type: "pdf",
+    description: "Lecture slides explaining root-finding algorithms and floating-point precision.",
+    link: "https://drive.google.com/drive/folders/1GD_UUMucSZ61UCJo07MoJ89Tq3CXaFBA"
+},
+{
+    id: 73,
+    title: "worksheet",
+    year: "2022",
+    module: "numerical analysis",
+    type: "pdf",
+    description: "Practice sheet on LU decomposition, solving systems, and polynomial approximation.",
+    link: "https://drive.google.com/drive/folders/1_MjlObTI0tA4Zf4BBHW2A8HJzkQ-i1QE"
+},
+
+{
+    id: 74,
+    title: "exam",
+    year: "2022",
+    module: "algebra",
+    type: "pdf",
+    description: "Algebra exam covering vector spaces, isomorphisms, and matrix transformations.",
+    link: "https://drive.google.com/drive/folders/1AbdjtQiVgiDFi1lpEx0yTPwJBnBns6uv"
+},
+{
+    id: 75,
+    title: "lecture farhi",
+    year: "2022",
+    module: "algebra",
+    type: "pdf",
+    description: "Lecture notes explaining linear maps, eigenvalues, and diagonalization techniques.",
+    link: "https://drive.google.com/drive/folders/17L_HISoIMmXLf9n_CAXjVEnZ_p8DMQA9"
+},
+{
+    id: 75,
+    title: "lecture ben ahmed",
+    year: "2022",
+    module: "algebra",
+    type: "pdf",
+    description: "Lecture notes explaining linear maps, eigenvalues, and diagonalization techniques.",
+    link: "https://drive.google.com/drive/folders/1EAi9p2sm59Qw1YzYXkykDy_2i7_iKEWO"
+},
+{
+    id: 76,
+    title: "worksheet",
+    year: "2022",
+    module: "algebra",
+    type: "pdf",
+    description: "Matrix operations worksheet: invertibility, rank, and basis transformations.",
+    link: "https://drive.google.com/drive/folders/1VruApy2Sq4tirK4gbP05xCkkgks36_j6"
+},
+
+{
+    id: 77,
+    title: "exam",
+    year: "2022",
+    module: "probability",
+    type: "pdf",
+    description: "Comprehensive probability exam: distributions, expectation, and Markov chains.",
+    link: "https://drive.google.com/drive/u/1/folders/1PwwZcwtYLt9wsm-giEkJdJQQhnEag-Y0"
+},
+{
+    id: 78,
+    title: "lecture",
+    year: "2022",
+    module: "probability",
+    type: "pdf",
+    description: "Lecture on conditional probability, independence, and random experiments.",
+    link: "https://drive.google.com/drive/folders/1sL9HCZOqAkfgCl0NGY0seeB-gxoCvo1o"
+},
+{
+    id: 79,
+    title: "worksheet",
+    year: "2022",
+    module: "probability",
+    type: "pdf",
+    description: "Problem set on variance, expectation, and combinatorial probability exercises.",
+    link: "https://drive.google.com/drive/u/1/folders/1NAUzI0qAGnOupZ4GPAgjT7ctw0PA-jX7"
+},
+
+{
+    id: 80,
+    title: "exam",
+    year: "2022",
+    module: "analysis",
+    type: "pdf",
+    description: "Final analysis exam testing sequences, compactness, and Riemann integration.",
+    link: "https://drive.google.com/drive/u/1/folders/13fLEnoiMo_U9PhaTMI-G3nwq7sKz493S"
+},
+{
+    id: 81,
+    title: "lecture",
+    year: "2022",
+    module: "analysis",
+    type: "pdf",
+    description: "Lecture notes on the structure of real numbers, supremum/infimum, and limits.",
+    link: "https://drive.google.com/drive/folders/1XBCy0mDP_vnFqijZJozSvoFgVmJU6sMh"
+},
+{
+    id: 82,
+    title: "worksheet",
+    year: "2022",
+    module: "analysis",
+    type: "pdf",
+    description: "Exercises on continuity, differentiability, and the Mean Value Theorem.",
+    link: "https://drive.google.com/drive/u/1/folders/11-HdkH1HFOFg4Ub8hVVhz_bpxEVIaUZd"
+}
+,
+                // 2021 Academic Year semestre 4
+            {
+    id: 83,
+    title: "exam",
+    year: "2021",
+    module: "nvs",
+    type: "pdf",
+    description: "Exam focused on scalar products, orthogonal projections, and Gram-Schmidt process.",
+    link: "https://drive.google.com/drive/folders/12vGiW274gqZYeLYYmu617np9iMdgleft"
+},
+{
+    id: 84,
+    title: "lecture",
+    year: "2021",
+    module: "nvs",
+    type: "pdf",
+    description: "Lecture notes introducing vector norms, inner product spaces, and orthonormal bases.",
+    link: "https://drive.google.com/drive/folders/19l5ucKpoCvJmouX4Md_EiT6zFr_p9rnE"
+},
+{
+    id: 85,
+    title: "worksheet",
+    year: "2021",
+    module: "nvs",
+    type: "pdf",
+    description: "Practice problems on vector subspaces, projections, and orthogonality tests.",
+    link: "https://drive.google.com/drive/folders/1T6mKdA1JR84Xo3ksi7Ri5HDn2DxVdRLN"
+},
+
+{
+    id: 86,
+    title: "exam",
+    year: "2021",
+    module: "measure",
+    type: "pdf",
+    description: "Measure theory exam on sigma-algebras, measurable functions, and Lebesgue integrals.",
+    link: "https://drive.google.com/drive/u/1/folders/1dvnufGUbRw_i5oIqJl_sW26gN1se7sAw"
+},
+{
+    id: 87,
+    title: "lecture",
+    year: "2021",
+    module: "measure",
+    type: "pdf",
+    description: "Lecture explaining outer measure, measurable sets, and the construction of Lebesgue measure.",
+    link: "https://drive.google.com/drive/u/1/folders/1uO1BQymeWkso7kxkTsHzRJD1s2u3Smg_"
+},
+{
+    id: 88,
+    title: "worksheet",
+    year: "2021",
+    module: "measure",
+    type: "pdf",
+    description: "Problem sheet on convergence theorems, null sets, and integration techniques.",
+    link: "https://drive.google.com/drive/u/1/folders/1sMk4ECO6XhMOBsVixi67LHRTIVxBuzzN"
+},
+
+{
+    id: 89,
+    title: "exam",
+    year: "2021",
+    module: "analysis",
+    type: "pdf",
+    description: "Final exam covering sequences, limits, differentiability, and function continuity.",
+    link: "https://drive.google.com/drive/folders/1skVl8StJOt7SEhWhEKAxFexpA3EJHfeW"
+},
+{
+    id: 90,
+    title: "lecture",
+    year: "2021",
+    module: "analysis",
+    type: "pdf",
+    description: "Lecture on uniform convergence, Taylor expansions, and continuity in ℝⁿ.",
+    link: "https://drive.google.com/drive/folders/1pmXlqgn4HUk97z6HnXU241lscgx1mO_3"
+},
+{
+    id: 91,
+    title: "worksheet",
+    year: "2021",
+    module: "analysis",
+    type: "pdf",
+    description: "Problems on pointwise vs uniform convergence, integration rules, and function limits.",
+    link: "https://drive.google.com/drive/folders/1GX6WV-3wbv4U0qFsRIip-GvZaTCqm7-M"
+},
+
+{
+    id: 92,
+    title: "exam",
+    year: "2021",
+    module: "numerical analysis",
+    type: "pdf",
+    description: "Exam on interpolation, Newton’s method, and solving linear systems numerically.",
+    link: "https://drive.google.com/drive/folders/1HmYL_56ChF9FyUQ8fhs9ffugiZ70uHBC"
+},
+{
+    id: 93,
+    title: "lecture",
+    year: "2021",
+    module: "numerical analysis",
+    type: "pdf",
+    description: "Lecture on numerical stability, condition numbers, and iterative methods.",
+    link: "https://drive.google.com/drive/folders/16GqnF3BaemNps-viP4mB8m_qwPlmUg-w"
+},
+{
+    id: 94,
+    title: "worksheet",
+    year: "2021",
+    module: "numerical analysis",
+    type: "pdf",
+    description: "Exercises on finite differences, LU decomposition, and convergence analysis.",
+    link: "https://drive.google.com/drive/folders/1hbM6pNy2aCfI1z0YfluxaTtR4jU3stAv"
+},
+
+{
+    id: 95,
+    title: "exam",
+    year: "2021",
+    module: "programming",
+    type: "pdf",
+    description: "Programming exam testing Python syntax, control flow, and file manipulation.",
+    link: "https://drive.google.com/drive/folders/14bJ38OM3oB6BJFhXObq434sfXl8pg_9D"
+},
+{
+    id: 96,
+    title: "lecture",
+    year: "2021",
+    module: "programming",
+    type: "pdf",
+    description: "Lecture on object-oriented programming: classes, methods, and inheritance in Python.",
+    link: "https://drive.google.com/drive/folders/11zcZ87t62pSuNBQkwOYqaeTdfWpRBv2k"
+},
+{
+    id: 97,
+    title: "worksheet",
+    year: "2021",
+    module: "programming",
+    type: "pdf",
+    description: "Coding exercises covering functions, recursion, and error handling in Python.",
+    link: "https://drive.google.com/drive/folders/1Qm31Oa3APwo_wlvyaLkObErZS-fd5_62"
+},
+
+{
+    id: 98,
+    title: "exam",
+    year: "2021",
+    module: "geometry",
+    type: "pdf",
+    description: "Geometry exam covering affine transformations, distances, and conic sections.",
+    link: "https://drive.google.com/drive/u/1/folders/19KFvULcuDTC9eteS-8IgupwlpVkFxG9n"
+},
+{
+    id: 99,
+    title: "lecture",
+    year: "2021",
+    module: "geometry",
+    type: "pdf",
+    description: "Lecture on vectors in space, scalar products, and intersections of lines and planes.",
+    link: "https://drive.google.com/drive/folders/1OJV07Xvy1Ad3FgcjmZDVQYKeulRDWRO1"
+},
+{
+    id: 100,
+    title: "worksheet",
+    year: "2021",
+    module: "geometry",
+    type: "pdf",
+    description: "Practice problems on projections, angles, and geometric constructions.",
+    link: "https://drive.google.com/drive/folders/10po7STG2_v2NzwOlXrRZmURxC7VHMte8"
+}
+
+            
+
+
+                // 2020 Academic Year semestre 5
+            ,
+
+           {
+    id: 101,
+    title: "exam",
+    year: "2020",
+    module: "algebra",
+    type: "pdf",
+    description: "xam questions designed to test both coding and algebra concepts..",
+    link: "https://drive.google.com/drive/folders/16s2lzp5zxviYaaCs_cmBknPdpWuhx-Kl"
+},
+,
+       {
+    id: 300,
+    title: "lecture(azouaou)",
+    year: "2020",
+    module: "algebra",
+    type: "pdf",
+    description: "A clear lecture by Azouaou blending coding logic with algebra fundamentals.",
+    link: "https://drive.google.com/drive/folders/1j-A0f3YzP5_V8HEuZRSuX7mEfs9nwTBM"
+},
+{
+    id: 102,
+    title: "lecture",
+    year: "2020",
+    module: "algebra",
+    type: "pdf",
+    description: "A clear lecture blending coding logic with algebra fundamentals.",
+    link: "https://drive.google.com/drive/folders/1Zfljv4t96Rqa19aM5T9S1iHG2_-lqbEv"
+},
+{
+    id: 103,
+    title: "worksheet",
+    year: "2020",
+    module: "algebra",
+    type: "pdf",
+    description: "Practice exercises combining programming tasks with algebra problems.",
+    link: "https://drive.google.com/drive/folders/190iSubLfZ_6-V5o0EzHitlQA4TnjC-eB"
+},
+
+{
+    id: 104,
+    title: "exam",
+    year: "2020",
+    module: "complex",
+    type: "pdf",
+    description: "Exam covering complex functions, Cauchy-Riemann equations, and contour integration.",
+    link: "https://drive.google.com/drive/folders/1-pfaaP0YRUcB4p27LjfhLny3olXxeyVU"
+},
+{
+    id: 105,
+    title: "lecture",
+    year: "2020",
+    module: "complex",
+    type: "pdf",
+    description: "Lecture explaining analytic functions, residues, and conformal mappings.",
+    link: "https://drive.google.com/drive/folders/1MTBHw5xQFOPNYu7FMqoN6ZlgKvEoA5nP"
+},
+{
+    id: 303,
+    title: "lecture (azouaou)",
+    year: "2020",
+    module: "complex",
+    type: "pdf",
+    description: "A detailed lecture by Azouaou explaining the core ideas of complex functions and their applications.",
+    link: "https://drive.google.com/drive/folders/1vpMOxV5tjT8rG0XugADGXsjDpCTh9Spx"
+},
+{
+    id: 106,
+    title: "worksheet",
+    year: "2020",
+    module: "complex",
+    type: "pdf",
+    description: "Problem set on Euler's formula, power series, and complex integrals.",
+    link: "https://drive.google.com/drive/folders/1i9kpDOVmR1aAK2xjktt9fOPvf0LWJo8C"
+},
+
+{
+    id: 107,
+    title: "exam",
+    year: "2020",
+    module: "analysis",
+    type: "pdf",
+    description: "Exam questions to assess understanding of norms, Banach, and Hilbert spaces..",
+    link: "https://drive.google.com/drive/folders/1aX9yXL1sOIdxuSoY93cKC9IP_JowXl9V"
+},
+{
+    id: 108,
+    title: "lecture",
+    year: "2020",
+    module: "analysis",
+    type: "pdf",
+    description: "A clear lecture introducing key concepts of functional spaces and operators.",
+    link: "https://drive.google.com/drive/folders/1NQ1HUubeWXT5Da-418I-ECYYOTKFbkce"
+},
+{
+    id: 302,
+    title: "lecture(azouaou)",
+    year: "2020",
+    module: "analysis",
+    type: "pdf",
+    description: "A clear lecture introducing key concepts of functional spaces and operators.",
+    link: "https://drive.google.com/drive/folders/1NO30Pc8N0NUyo0pr-ugqmpQGkwoqFfE0"
+},
+{
+    id: 109,
+    title: "worksheet",
+    year: "2020",
+    module: "analysis",
+    type: "pdf",
+    description: "Targeted exercises to practice the foundations of functional analysis.",
+    link: "https://drive.google.com/drive/folders/1NDus_F8-k3f_8ypbqFg2p6US_Mo4fqge"
+},
+
+{
+    id: 110,
+    title: "exam",
+    year: "2020",
+    module: "statistic",
+    type: "pdf",
+    description: "Statistics exam including hypothesis testing, distributions, and data interpretation.",
+    link: "https://drive.google.com/drive/folders/1znFDySPTgwcFB_46SFv_wdse2meJNo1X"
+},
+
+{
+    id: 301,
+    title: "lecture(azouaou )+extra ",
+    year: "2020",
+    module: "statistic",
+    type: "pdf",
+    description: "Lecture slides on mean, variance, confidence intervals, and sampling techniques.",
+    link: "https://drive.google.com/drive/folders/1xuCfsbwoW3ZGxATbmcINWZFUu4-n-jFL"
+},
+{
+    id: 999,
+    title: "lab work",
+    year: "2020",
+    module: "statistic",
+    type: "pdf",
+    description: "Lecture slides on mean, variance, confidence intervals, and sampling techniques.",
+    link: "https://drive.google.com/drive/folders/1g0ihY-lt0ja_GqMdcEwpj3Z3SA57B8n4"
+},
+{
+    id: 112,
+    title: "worksheet",
+    year: "2020",
+    module: "statistic",
+    type: "pdf",
+    description: "Exercises on normal distribution, z-scores, and interpreting histograms.",
+    link: "https://drive.google.com/drive/folders/1u4qL8LPSYtQS7Iz7LfnFTCyjPAYw3opC"
+},
+
+{
+    id: 113,
+    title: "exam",
+    year: "2020",
+    module: "ode",
+    type: "pdf",
+    description: "ODE exam on first and second-order differential equations and applications.",
+    link: "https://drive.google.com/drive/folders/1fBkyaGQwKRh6hzPLGcwVOQ_b6luibrLR"
+},
+{
+    id: 114,
+    title: "lecture",
+    year: "2020",
+    module: "ode",
+    type: "pdf",
+    description: "Lecture notes covering separable equations, linear systems, and modeling.",
+    link: "https://drive.google.com/drive/folders/1X4RPty3AP0fDZKDcCOvrNSovt5f2vIa4"
+},
+{
+    id: 305,
+    title: "lecture(azouaou)",
+    year: "2020",
+    module: "ode",
+    type: "pdf",
+    description: "Lecture notes covering separable equations, linear systems, and modeling.",
+    link: "https://drive.google.com/drive/folders/1TUJV-5CNsZ1BGi3ctD4yPjDgK-aA4Yr2"
+},
+{
+    id: 115,
+    title: "worksheet",
+    year: "2020",
+    module: "ode",
+    type: "pdf",
+    description: "Problem set on exact equations, integrating factors, and phase diagrams.",
+    link: "https://drive.google.com/drive/folders/1T0QkSb4yWR79nrGpdPfcBWpEELvS2Dt3"
+},
+
+{
+    id: 116,
+    title: "exam",
+    year: "2020",
+    module: "pde",
+    type: "pdf",
+    description: "PDE exam on wave, heat, and Laplace equations with boundary conditions.",
+    link: "https://drive.google.com/drive/folders/12Paq8JGOlz4oBegyWaGelq38F-Lb1rTD"
+},
+{
+    id: 117,
+    title: "lecture",
+    year: "2020",
+    module: "pde",
+    type: "pdf",
+    description: "Lecture introducing classification of PDEs, separation of variables, and Fourier series.",
+    link: "https://drive.google.com/drive/folders/1HB2KulvX8CzlfU1-yJlXwA9m050dkSa4"
+},
+{
+    id: 306,
+    title: "lecture(azouaou)",
+    year: "2020",
+    module: "pde",
+    type: "pdf",
+    description: "Lecture introducing classification of PDEs, separation of variables, and Fourier series.",
+    link: "https://drive.google.com/drive/folders/1JEPV2zyXHtGVdBgPmu4mAVH3OIGgxaiI"
+},
+{
+    id: 118,
+    title: "worksheet",
+    year: "2020",
+    module: "pde",
+    type: "pdf",
+    description: "Practice problems on boundary value problems and analytical solutions.",
+    link: "https://drive.google.com/drive/folders/1fgi28AfZuSrvVZBmmRp8igFUAbePZqAy"
+},
+
+{
+    id: 119,
+    title: "exam",
+    year: "2020",
+    module: "stochastic",
+    type: "pdf",
+    description: "Exam covering Markov chains, stochastic processes, and expectation calculations.",
+    link: "https://drive.google.com/drive/folders/1m8VwdkuETK04H3RVu9eQRXyBeNpjgw77"
+},
+{
+    id: 120,
+    title: "lecture",
+    year: "2020",
+    module: "stochastic",
+    type: "pdf",
+    description: "Introductory lecture on random walks, transitions, and long-term behavior.",
+    link: "https://drive.google.com/drive/folders/12urq27-zebs1itqomniJjI5XlFSQhEdb"
+},
+{
+    id: 311,
+    title: "lecture(azouaou)+TD",
+    year: "2020",
+    module: "stochastic",
+    type: "pdf",
+    description: "Introductory lecture on random walks, transitions, and long-term behavior.",
+    link: "https://drive.google.com/drive/folders/1xyXkIoHW8w-mS4DIQvm5chn4mJ3uGWNn"
+},
+
+
+{
+    id: 123,
+    title: "lecture",
+    year: "2020",
+    module: "oop",
+    type: "pdf",
+    description: "Lecture covering constructors, method overloading, and interfaces in OOP design.",
+    link: "https://drive.google.com/drive/folders/1hUMPkoUoMrJkMj4i9CGoAs4AF0GkcEML"
+},
+
+
+            // 2019 Academic Year semestre 6
+
+            ,
+
+{
+    id: 126,
+    title: "lecture",
+    year: "2019",
+    module: "continuous",
+    type: "pdf",
+    description: "Lectures introducing continuous functions, open sets, and uniform continuity.",
+    link: "https://drive.google.com/drive/folders/1bvgXzOeDMffNWxtTpT8hmakZQVhx8JeD"
+},
+
+
+{
+    id: 128,
+    title: "exam",
+    year: "2019",
+    module: "data",
+    type: "pdf",
+    description: "Data science exam with questions on preprocessing, visualization, and clustering.",
+    link: "https://drive.google.com/drive/folders/10dG6xpyjYBoF8-5mnPzNJCkMIZKln-MG"
+},
+{
+    id: 129,
+    title: "lecture",
+    year: "2019",
+    module: "data",
+    type: "pdf",
+    description: "Lecture slides on datasets, normalization, and exploratory data analysis.",
+    link: "https://drive.google.com/drive/folders/1XdXAlHqxYQMAmIRGREaqrAwpSjOzJe6a"
+},
+{
+    id: 130,
+    title: "worksheet",
+    year: "2019",
+    module: "data",
+    type: "pdf",
+    description: "Hands-on exercises with pandas, data wrangling, and histogram analysis.",
+    link: "https://drive.google.com/drive/folders/1Xx53UNGZ8phJIHE_xcWXGySKy6G-qRth"
+},
+
+{
+    id: 131,
+    title: "exam",
+    year: "2019",
+    module: "geometry",
+    type: "pdf",
+    description: "Geometry exam on affine spaces, transformations, and projections.",
+    link: "https://drive.google.com/drive/folders/1exgscuX-v5fkNY_O3RKKar_e-rptxEFO"
+},
+{
+    id: 132,
+    title: "lecture",
+    year: "2019",
+    module: "geometry",
+    type: "pdf",
+    description: "Lectures on vector geometry, conics, and coordinate transformations.",
+    link: "https://drive.google.com/drive/folders/1yQ8GZ1swj1Kmqn3XGI96vjYQfsvJ9rvQ"
+},
+{
+    id: 133,
+    title: "worksheet",
+    year: "2019",
+    module: "geometry",
+    type: "pdf",
+    description: "Worksheets on Euclidean metrics, vector spaces, and matrix representations.",
+    link: "https://drive.google.com/drive/folders/1xXD4y8WHH0xyrUo3-Hz3YrpYQit3bThH"
+},
+
+{
+    id: 134,
+    title: "exam",
+    year: "2019",
+    module: "field",
+    type: "pdf",
+    description: "Abstract algebra exam on field axioms, extensions, and finite fields.",
+    link: "https://drive.google.com/drive/folders/1uejhZKzd1fLDHeRJuAA1DqE-EUhfn-l4"
+},
+{
+    id: 135,
+    title: "lecture",
+    year: "2019",
+    module: "field",
+    type: "pdf",
+    description: "Lectures covering field theory, Galois theory, and polynomial roots.",
+    link: "https://drive.google.com/drive/folders/1uectllK_Ilr759f3BIpqI1OI7NVcyJLb"
+},
+{
+    id: 136,
+    title: "worksheet",
+    year: "2019",
+    module: "field",
+    type: "pdf",
+    description: "Problems on field homomorphisms, characteristic of fields, and algebraic elements.",
+    link: "https://drive.google.com/drive/folders/1XDeKyULGrHAdQD0CRtWriFkxR-HMi60X"
+},
+
+{
+    id: 137,
+    title: "exam",
+    year: "2019",
+    module: "integral",
+    type: "pdf",
+    description: "Exam questions designed to test mastery of transformation techniques and integral calculus.",
+    link: "https://drive.google.com/drive/folders/1hV6eHIHr2wTeFOGr7tkNPzMDrb8br2W5"
+},
+{
+    id: 138,
+    title: "lecture",
+    year: "2019",
+    module: "integral",
+    type: "pdf",
+    description: "A structured lecture covering core ideas of transformations and integration methods..",
+    link: "https://drive.google.com/drive/folders/1CZXIl5WAUH-fh5n0YjtqhYGK3HR13eK1"
+},
+{
+    id: 139,
+    title: "worksheet",
+    year: "2019",
+    module: "integral",
+    type: "pdf",
+    description: "Practice exercises to reinforce skills in solving problems involving transformations and integrals.",
+    link: "https://drive.google.com/drive/folders/1R1hD7yfXmo9u8r8ehvviGHzqxVQrlec4"
+},
+
+{
+    id: 140,
+    title: "exam",
+    year: "2019",
+    module: "ai",
+    type: "pdf",
+    description: "AI exam with logic programming, search algorithms, and decision trees.",
+    link: "https://drive.google.com/drive/folders/1sp0qVS2S3sqCaJUZL6UzX-8zApFzfg9r"
+},
+{
+    id: 141,
+    title: "lecture",
+    year: "2019",
+    module: "ai",
+    type: "pdf",
+    description: "Lectures on intelligent agents, knowledge representation, and inference systems.",
+    link: "https://drive.google.com/drive/folders/1sp0qVS2S3sqCaJUZL6UzX-8zApFzfg9r"
+},
+{
+    id: 142,
+    title: "worksheet",
+    year: "2019",
+    module: "ai",
+    type: "pdf",
+    description: "Problem sets on minimax, A*, and neural network basics.",
+    link: "https://drive.google.com/drive/folders/1sp0qVS2S3sqCaJUZL6UzX-8zApFzfg9r"
+},
+
+{
+    id: 143,
+    title: "exam",
+    year: "2019",
+    module: "regression",
+    type: "pdf",
+    description: "Regression exam on least squares, regularization, and model validation.",
+    link: "https://drive.google.com/drive/folders/1qdHaCYNa1aiCGF8XqKFG-q-0j2M6VZwk"
+},
+{
+    id: 144,
+    title: "lecture",
+    year: "2019",
+    module: "regression",
+    type: "pdf",
+    description: "Lecture slides on linear regression, ridge regression, and assumptions checking.",
+    link: "https://drive.google.com/drive/folders/1LGmM-njfQUvWHQBeLnmXAL2AsQwGOriL"
+},
+{
+    id: 145,
+    title: "worksheet",
+    year: "2019",
+    module: "regression",
+    type: "pdf",
+    description: "Exercises using real-world data sets with scikit-learn and regression diagnostics.",
+    link: "https://drive.google.com/drive/folders/1oXMCspc_psnfpMqdbOPklw2NkpsFQpL9"
+},
+
+{
+    id: 146,
+    title: "exam",
+    year: "2019",
+    module: "pde",
+    type: "pdf",
+    description: "PDE exam on wave equation, Laplacian, and boundary value problems.",
+    link: "https://drive.google.com/drive/folders/1q27NvFrPSoAuMLKLVUIurFU1KihcPio4"
+},
+{
+    id: 147,
+    title: "lecture",
+    year: "2019",
+    module: "pde",
+    type: "pdf",
+    description: "Lectures on characteristics, Green’s functions, and separation of variables.",
+    link: "https://drive.google.com/drive/folders/1fFq0RC34ySfHZN58GQVejeDULvrqKTy_"
+},
+{
+    id: 148,
+    title: "worksheet +lab",
+    year: "2019",
+    module: "pde",
+    type: "pdf",
+    description: "Worksheet on solving PDEs with Fourier and Laplace transform techniques.",
+    link: "https://drive.google.com/drive/folders/1nxGULCxCLcFKBGRb0yXPHgMgTOURP-rs"
+}
+,
+
+// 2018 Academic Year semestre 7ms
+{
+    id: 320,
+    title: "resources",
+    year: "2018",
+    module: "Continuum Mechanics",
+    type: "pdf",
+    description: "testing stress, strain, and the fundamentals of continuum modeling.",
+    link: "https://drive.google.com/drive/folders/1z3s5cYYm0n9TXU4zIDOt3_rxOFbMHYLw"
+},
+{
+    id: 321,
+    title: "lecture",
+    year: "2018",
+    module: "Continuum Mechanics",
+    type: "pdf",
+    description: "Lecture introducing deformation, balance laws, and continuum equations.",
+    link: "https://drive.google.com/drive/folders/1iBmCxFAshvRkbx4MC9bF8QTSgJunSAK7"
+},
+{
+    id: 322,
+    title: "worksheet",
+    year: "2018",
+    module: "Continuum Mechanics",
+    type: "pdf",
+    description: "Exercises on stress tensors, kinematics, and mechanical behavior of materials.",
+    link: "https://drive.google.com/drive/folders/1N65aq_LZzg_0XDFqKoImnyM6pd8jtR7v"
+},
+
+{
+    id: 323,
+    title: "projects",
+    year: "2018",
+    module: "Control of Differential Equations",
+    type: "pdf",
+    description: "controlling systems governed by ordinary and partial differential equations.",
+    link: "https://drive.google.com/drive/folders/1Z79jcqz1DiunEfdUbqw1i84mMSzsTIba"
+},
+{
+    id: 324,
+    title: "lecture",
+    year: "2018",
+    module: "Control of Differential Equations",
+    type: "pdf",
+    description: "Lecture covering feedback control methods and stabilization of DE systems.",
+    link: "https://drive.google.com/drive/folders/1iHlEdvapQAGijwHKVz070NAwctlsnPcP"
+},
+{
+    id: 325,
+    title: "worksheet+TP",
+    year: "2018",
+    module: "Control of Differential Equations",
+    type: "pdf",
+    description: "Practice problems on system controllability, observability, and optimal control.",
+    link: "https://drive.google.com/drive/folders/1qcgFt3Fe-MPEFbF9fRC0TYdr1lKn_oqa"
+},
+
+{
+    id: 326,
+    title: "resources",
+    year: "2018",
+    module: "Distributions",
+    type: "pdf",
+    description: "distribution theory, generalized functions, and applications.",
+    link: "https://drive.google.com/drive/folders/1yP61EM7KXZTjzLSVpItV3zv_jn5koYDW"
+},
+{
+    id: 327,
+    title: "lecture",
+    year: "2018",
+    module: "Distributions",
+    type: "pdf",
+    description: "Lecture introducing Dirac delta, test functions, and weak derivatives.",
+    link: "https://drive.google.com/drive/folders/1pwuaUdC0jGT0kv3oUYtwGLOi0j1tjM5a"
+},
+{
+    id: 328,
+    title: "worksheet+tp",
+    year: "2018",
+    module: "Distributions",
+    type: "pdf",
+    description: "Exercises on tempered distributions and their role in PDE solutions.",
+    link: "https://drive.google.com/drive/folders/1ZQDM2KV9UuxciqY3zMVpgn3huM4byG4e"
+},
+
+{
+    id: 329,
+    title: "hachama link github",
+    year: "2018",
+    module: "Image Processing",
+    type: "pdf",
+    description: "Exam assessing filtering, edge detection, and digital image fundamentals.",
+    link: "https://hachama.github.io/introimg/"
+},
+{
+    id: 330,
+    title: "resources",
+    year: "2018",
+    module: "Image Processing",
+    type: "pdf",
+    description: "Lecture on image enhancement, segmentation, and Fourier techniques.",
+    link: "https://drive.google.com/drive/folders/1rBSot79SYYPqTK_Ef_7rQxC2sNRngCw2"
+},
+
+
+
+{
+    id: 333,
+    title: "resources",
+    year: "2018",
+    module: "Matrix Num",
+    type: "pdf",
+    description: "Lecture on LU, QR, and eigenvalue computations for numerical stability.",
+    link: "https://drive.google.com/drive/folders/1l-UvrhqjnuzdKqEA6N8FXocqLeA9EyUo"
+},
+{
+    id: 334,
+    title: "worksheet+tp",
+    year: "2018",
+    module: "Matrix Num",
+    type: "pdf",
+    description: "Exercises on iterative solvers, factorization, and large-scale matrix problems.",
+    link: "https://drive.google.com/drive/folders/1vnJ61pWStmL6NqkPKpytgagHyZQkET4B"
+},
+
+{
+    id: 335,
+    title: "resources",
+    year: "2018",
+    module: "Simulation",
+    type: "pdf",
+    description: "modeling, Monte Carlo methods, and simulation frameworks.",
+    link: "https://drive.google.com/drive/folders/1dh7ukFlw9trknpAYpxGUyL_bYiCjXc0d"
+},
+{
+    id: 336,
+    title: "lecture",
+    year: "2018",
+    module: "Simulation",
+    type: "pdf",
+    description: "Lecture on principles of dynamic simulation and stochastic modeling.",
+    link: "https://drive.google.com/drive/folders/1tT3OeQT1hHeIiuhwCEK3Eq-F6Bw1hULB"
+},
+{
+    id: 337,
+    title: "worksheet + tp",
+    year: "2018",
+    module: "Simulation",
+    type: "pdf",
+    description: "Exercises on running and analyzing numerical simulations and experiments.",
+    link: "https://drive.google.com/drive/folders/1oyL32YPtKfG4EnJHK0asQWKaHw7FaEyB"
+},
+// 2017 Academic Year semestre 8ms
+
+
+
+
+{
+    id: 338,
+    title: "homework",
+    year: "2017",
+    module: "Computer Vision",
+    type: "pdf",
+    description: "homework on feature detection, object recognition, and vision algorithms.",
+    link: "https://drive.google.com/drive/folders/1DQBnjYjgAplIDXSlMpyJnfkYefukis41"
+},
+{
+    id: 339,
+    title: "lecture",
+    year: "2017",
+    module: "Computer Vision",
+    type: "pdf",
+    description: "Lecture exploring camera models, 3D reconstruction, and recognition systems.",
+    link: "https://drive.google.com/drive/folders/1q7PYY5dp_F9LjfUVm492dHlHGBs4YE7X"
+},
+{
+    id: 340,
+    title: "resources",
+    year: "2017",
+    module: "Computer Vision",
+    type: "pdf",
+    description: " image descriptors, motion analysis, and vision pipelines.",
+    link: "https://drive.google.com/drive/folders/1AptmkFsW0z0Djq6slFzxECROd3r6t-mz"
+},
+
+{
+    id: 341,
+    title: "resources",
+    year: "2017",
+    module: "Convex Optimization",
+    type: "pdf",
+    description: "convex sets, duality, and optimization algorithms.",
+    link: "https://drive.google.com/drive/folders/1UU6Lxk1aIGbdk8xoKprx4_sJJhbdt-jZ"
+},
+{
+    id: 342,
+    title: "lecture",
+    year: "2017",
+    module: "Convex Optimization",
+    type: "pdf",
+    description: "Lecture covering convex functions, KKT conditions, and Lagrangian methods.",
+    link: "https://drive.google.com/drive/folders/1KBqYzHWCfqfZESYFnhddhQv--rEttlNE"
+},
+{
+    id: 343,
+    title: "worksheet+tp",
+    year: "2017",
+    module: "Convex Optimization",
+    type: "pdf",
+    description: "Problems on interior-point methods and real-world convex optimization models.",
+    link: "https://drive.google.com/drive/folders/1dJwMvnIMJpSTJXo_x91NZJZFDP2UDCBt"
+},
+
+{
+    id: 344,
+    title: "resources",
+    year: "2017",
+    module: "Fluid Mechanics",
+    type: "pdf",
+    description: "testing fluid statics, dynamics, and Bernoulli principles.",
+    link: "https://drive.google.com/drive/folders/19gGIw5mtlOBn7JfFDyFWRixV73665-L-"
+},
+{
+    id: 345,
+    title: "lecture",
+    year: "2017",
+    module: "Fluid Mechanics",
+    type: "pdf",
+    description: "Lecture on Navier-Stokes, flow regimes, and turbulence basics.",
+    link: "https://drive.google.com/drive/folders/1nGjF-QX3NRaiqXY4WxABmt7QH9mWuXGi"
+},
+{
+    id: 346,
+    title: "worksheet",
+    year: "2017",
+    module: "Fluid Mechanics",
+    type: "pdf",
+    description: "Exercises on pressure distribution, laminar flow, and dimensional analysis.",
+    link: "https://drive.google.com/drive/folders/1LZ-fmlsy3i_Io-4XsSoyQRHe5q2tRO-r"
+},
+
+{
+    id: 347,
+    title: "exam",
+    year: "2017",
+    module: "Fractional Derivative Analysis",
+    type: "pdf",
+    description: "Exam on fractional calculus, operators, and their applications.",
+    link: "https://drive.google.com/drive/folders/1m_smpb3ut9HQA-8mOYoLbvB7jDkrKiGF"
+},
+{
+    id: 348,
+    title: "lecture",
+    year: "2017",
+    module: "Fractional Derivative Analysis",
+    type: "pdf",
+    description: "Lecture on fractional derivatives, integrals, and modeling phenomena.",
+    link: "https://drive.google.com/drive/folders/1VZTF_n9lFZXsf_rNW5qWt-S1UYehU3D4"
+},
+
+
+{
+    id: 350,
+    title: "resources",
+    year: "2017",
+    module: "Introduction to Biology Modeling",
+    type: "pdf",
+    description: "mathematical models for population dynamics and biological systems.",
+    link: "https://drive.google.com/drive/folders/13r1PIZEI4wKvxeJq0taX5OQsJwv8J_Jy"
+},
+{
+    id: 351,
+    title: "lecture",
+    year: "2017",
+    module: "Introduction to Biology Modeling",
+    type: "pdf",
+    description: "Lecture on using equations and simulations for biological processes.",
+    link: "https://drive.google.com/drive/folders/1DQj8CU12a-OGmgVVU8xQJLmapmokRzA3"
+},
+{
+    id: 352,
+    title: "worksheet + exams",
+    year: "2017",
+    module: "Introduction to Biology Modeling",
+    type: "pdf",
+    description: "Exercises modeling epidemics, ecosystems, and genetic dynamics.",
+    link: "https://drive.google.com/drive/folders/1xygfZEN6QfQtRrttoh2wZSC9lWvcSXW9"
+},
+
+
+{
+    id: 354,
+    title: "lecture",
+    year: "2017",
+    module: "Non Variational Methods",
+    type: "pdf",
+    description: "Lecture covering principles and applications of non-variational techniques.",
+    link: "https://drive.google.com/drive/folders/10M29GuPO8avlkRxXzjLU_H9ccDqrfkQu"
+},
+{
+    id: 355,
+    title: "worksheet + exams",
+    year: "2017",
+    module: "Non Variational Methods",
+    type: "pdf",
+    description: "Practice sheets on applying non-variational methods to real problems.",
+    link: "https://drive.google.com/drive/folders/1Cg3jr9ON78I6IzyUZZx-pmnrnV3E9hXE"
+},
+
+{
+    id: 356,
+    title: "resources",
+    year: "2017",
+    module: "Stochastic Differential Equations",
+    type: "pdf",
+    description: " Ito calculus, stochastic processes, and SDE models.",
+    link: "https://drive.google.com/drive/folders/1Jkiej0UkmJRYWaTrh-Fk1gJkMzKAFJIJ"
+},
+{
+    id: 357,
+    title: "lecture",
+    year: "2017",
+    module: "Stochastic Differential Equations",
+    type: "pdf",
+    description: "Lecture on solving SDEs and their applications in finance and physics.",
+    link: "https://drive.google.com/drive/folders/11KZ5gkkPheYn6xuMo2CqNzhCx-C8ljxR"
+},
+{
+    id: 358,
+    title: "worksheet+exams",
+    year: "2017",
+    module: "Stochastic Differential Equations",
+    type: "pdf",
+    description: "Exercises on Brownian motion, Ito integrals, and stochastic models.",
+    link: "https://drive.google.com/drive/folders/15eoRAC9o96q_cxfeD6Vo_3tKeEGmslSC"
+}
+
+
+// 2016 Academic Year semestre 7cs
+// 2015 Academic Year semestre 8cs
+// 2014 Academic Year semestre 7ds
+// 2013 Academic Year semestre 8ds
+// 2012 Academic Year semestre 9
+
+
+
+
+
+        ];
+
+        // Define modules available for each year
+        const yearModules = {
+            "2024": [
+                { value: "analysis", label: "analysis 1" },
+                { value: "physics", label: "physics" },
+                { value: "algebra", label: "algebra" },
+                { value: "discrete", label: "dicrete math" },
+                { value: "programming", label: "DSA" },
+                { value: "probability", label: "stat&proba" },
+                { value: "general", label: "first year drive" }
+            ],
+            "2023": [
+                { value: "analysis", label: "analysis 02" },
+                { value: "algebra", label: "algebra 02" },
+                { value: "physics", label: "physics 02" },
+                { value: "programming", label: "C language" },
+                { value: "discrete", label: "discrete math 2" },
+                { value: "probability", label: "proba 1" },
+                { value: "general", label: "general" },
+                { value: "logic", label: "logic" }
+            ],
+            "2022": [
+                { value: "topology", label: "topology" },
+                { value: "geometry 1", label: "geometry 1" },
+                { value: "analysis", label: "analysis 3" },
+                 { value: "numerical analysis", label: "numericala analysis 1" },
+                { value: "algebra", label: "algebra 3" },
+                { value: "probability", label: "probability 2" }
+            ],
+            "2021": [
+                { value: "NVS", label: "nvs" },
+                { value: "geometry ", label: "geometry 2" },
+                { value: "analysis", label: "analysis 4" },
+                 { value: "numerical analysis", label: "numericala analysis 2" },
+                { value: "measure", label: "measure" },
+                { value: "programming", label: "python" }
+            ]
+            ,
+            "2020": [
+               { value: "algebra", label: "algebra&coding" },
+                { value: "complex", label: "complex analysis" },
+                { value: "analysis", label: "functional analysis" },
+                 { value: "statistic", label: "inferentiel stat" },
+                { value: "ode", label: "odes" },
+                { value: "pde", label: "pdes" },
+                { value: "stochastic", label: "stochastic" },
+                { value: "oop", label: "OOP" }
+            ]
+            
+            ,
+            "2019": [
+                { value: "continuous", label: "continous optimisation" },
+                { value: "data ", label: "data mining" },
+                { value: "geometry", label: "differential geometry" },
+                 { value: "field", label: "field extention" },
+                { value: "integral", label: "integral&transformation" },
+                { value: "ai", label: "ai" },
+                { value: "regression", label: "regression" },
+                { value: "pde", label: "pdes" }
+            ]
+            ,
+           "2018": [
+    { value: "Continuum Mechanics", label: "Continuum Mechanics" },
+    { value: "Control of Differential Equations", label: "Control of Differential Equations" },
+    { value: "Distributions", label: "Distributions" },
+    { value: "Image Processing", label: "Image Processing" },
+    { value: "Matrix Num", label: "Matrix Num" },
+    { value: "Simulation", label: "Simulation" }
+],
+
+"2017": [
+    { value: "Computer Vision", label: "Computer Vision" },
+    { value: "Convex Optimization", label: "Convex Optimization" },
+    { value: "Fluid Mechanics", label: "Fluid Mechanics" },
+    { value: "Fractional Derivative Analysis", label: "Fractional Derivative Analysis" },
+    { value: "Introduction to Biology Modeling", label: "Introduction to Biology Modeling" },
+    { value: "Non Variational Methods", label: "Non Variational Methods" },
+    { value: "Stochastic Differential Equations", label: "Stochastic Differential Equations" }
+]
+
+            ,
+            "2016": [
+               
+            ],
+            "2015": [
+                
+            
+            ]
+            ,
+            "2014": [
+                
+            ]
+            ,
+            "2013": [
+               
+            ]
+            ,
+            "2012": [
+                
+            ]
+            ,
+            "2011": [
+                
+            ]
+        };
+
+        // Define resource types available for each module
+        const moduleTypes = {
+            "mathematics": ["pdf", "video", "exercise"],
+            "dmathematics": ["pdf", "video", "exercise"],
+            "physics": ["pdf", "video", "exercise", "presentation"],
+            
+            
+            "programming": ["video", "exercise"],
+            
+
+            "algebra": ["pdf", "video", "exercise"],
+            "complex": ["pdf", "video", "exercise"],
+    "analysis": ["pdf", "video", "exercise"],
+    "statistic": ["pdf", "video", "exercise"],
+    "ode": ["pdf", "video", "exercise"],
+    "pde": ["pdf", "video", "exercise"],
+    "stochastic": ["pdf", "video", "exercise"],
+    "oop": ["pdf", "video", "exercise"],
+    "continuous": ["pdf", "video", "exercise"],
+    "data": ["pdf", "video", "exercise"],
+    "geometry": ["pdf", "video", "exercise"],
+    "field": ["pdf", "video", "exercise"],
+    "integral": ["pdf", "video", "exercise"],
+    "ai": ["pdf", "video", "exercise"],
+    "regression": ["pdf", "video", "exercise"],
+    "topology": ["pdf", "video", "exercise"],
+    "numerical_analysis": ["pdf", "video", "exercise"],
+    "probability": ["pdf", "video", "exercise"],
+    "logic": ["pdf", "video", "exercise"],
+    "programming": ["pdf", "video", "exercise"],
+    "general": ["pdf", "video", "exercise"],
+    "measure": ["pdf", "video", "exercise"],
+    "nvs": ["pdf", "video", "exercise"]
+        };
+
+        let filteredResources = [];
+
+        function populateModules(year) {
+            const moduleSelect = document.getElementById('moduleFilter');
+            const typeSelect = document.getElementById('typeFilter');
+            
+            if (!year) {
+                moduleSelect.innerHTML = '<option value="">Choose year first</option>';
+                moduleSelect.disabled = true;
+                typeSelect.innerHTML = '<option value="">Choose module first</option>';
+                typeSelect.disabled = true;
+                return;
+            }
+            
+            const modules = yearModules[year] || [];
+            moduleSelect.innerHTML = '<option value="">All Modules</option>';
+            
+            modules.forEach(module => {
+                moduleSelect.innerHTML += `<option value="${module.value}">${module.label}</option>`;
+            });
+            
+            moduleSelect.disabled = false;
+            typeSelect.innerHTML = '<option value="">Choose module first</option>';
+            typeSelect.disabled = true;
+        }
+
+        function populateTypes(module) {
+            const typeSelect = document.getElementById('typeFilter');
+            
+            if (!module) {
+                typeSelect.innerHTML = '<option value="">Choose module first</option>';
+                typeSelect.disabled = true;
+                return;
+            }
+            
+            const types = moduleTypes[module] || ["pdf", "video", "presentation", "exercise"];
+            typeSelect.innerHTML = '<option value="">All Types</option>';
+            
+            types.forEach(type => {
+                const displayType = type.charAt(0).toUpperCase() + type.slice(1);
+                typeSelect.innerHTML += `<option value="${type}">${displayType}</option>`;
+            });
+            
+            typeSelect.disabled = false;
+        }
+
+        function displayResources(resourcesToShow) {
+            const grid = document.getElementById('resourceGrid');
+            const count = document.getElementById('resultsCount');
+            
+            count.textContent = `${resourcesToShow.length} resource${resourcesToShow.length !== 1 ? 's' : ''}`;
+            
+            if (resourcesToShow.length === 0) {
+                grid.innerHTML = `
+                    <div class="no-results">
+                        <div class="no-results-icon">🔍</div>
+                        <h3>No resources found</h3>
+                        <p>Try adjusting your filters or selecting a different year/module combination.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            grid.innerHTML = resourcesToShow.map(resource => `
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <div>
+                            <h3 class="resource-title">${resource.title}</h3>
+                        </div>
+                        <span class="resource-type ${resource.type}">${resource.type}</span>
+                    </div>
+                    <p class="resource-description">${resource.description}</p>
+                    <a href="${resource.link}" target="_blank" class="resource-link">
+                        📂 Open in Google Drive
+                    </a>
+                </div>
+            `).join('');
+        }
+
+        function filterResources() {
+            const yearFilter = document.getElementById('yearFilter').value;
+            const moduleFilter = document.getElementById('moduleFilter').value;
+            const typeFilter = document.getElementById('typeFilter').value;
+            
+            filteredResources = resources.filter(resource => {
+                const matchesYear = !yearFilter || resource.year === yearFilter;
+                const matchesModule = !moduleFilter || resource.module === moduleFilter;
+                const matchesType = !typeFilter || resource.type === typeFilter;
+                return matchesYear && matchesModule && matchesType;
+            });
+            
+            displayResources(filteredResources);
+        }
+
+        function clearFilters() {
+            document.getElementById('yearFilter').value = '';
+            document.getElementById('moduleFilter').value = '';
+            document.getElementById('typeFilter').value = '';
+            
+            // Reset select states
+            populateModules('');
+            populateTypes('');
+            
+            filteredResources = [];
+            displayResources(filteredResources);
+        }
+
+        function onYearChange() {
+            const selectedYear = document.getElementById('yearFilter').value;
+            populateModules(selectedYear);
+            
+            // Reset module and type selections
+            document.getElementById('moduleFilter').value = '';
+            document.getElementById('typeFilter').value = '';
+            populateTypes('');
+            
+            filterResources();
+        }
+
+        function onModuleChange() {
+            const selectedModule = document.getElementById('moduleFilter').value;
+            populateTypes(selectedModule);
+            
+            // Reset type selection
+            document.getElementById('typeFilter').value = '';
+            
+            filterResources();
+        }
+
+        // Event listeners
+        document.getElementById('yearFilter').addEventListener('change', onYearChange);
+        document.getElementById('moduleFilter').addEventListener('change', onModuleChange);
+        document.getElementById('typeFilter').addEventListener('change', filterResources);
+
+        // Initialize with empty state
+        displayResources([]);
+    </script>
+
+    <!-- Contribute Section -->
+    <section class="contribute-section" id="contribute">
+        <div class="contribute-container">
+            <h2 class="contribute-title fade-in">Contribute</h2>
+            
+            <div class="contribute-options">
+                <div class="contribute-card fade-in">
+                    <div class="card-icon"><i class="fa-solid fa-desktop"></i></div>
+                    <h3 class="card-title">Contribute on GitHub</h3>
+                    <a href="https://github.com/Azzouz-billel" class="card-btn" target="_blank">📍 Contribute on Github</a>
+                </div>
+                
+                <div class="contribute-card fade-in">
+                    <div class="card-icon">❓</div>
+                    <h3 class="card-title">Give us your feedback</h3>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSecMgIySMuOZpeI26hPkj9k2An9lETtUhYu9eye4iey3vn86Q/viewform?usp=header" class="card-btn" target="_blank">📡 Give us your feedback</a>
+                </div>
+                
+                <div class="contribute-card fade-in">
+                    <div class="card-icon">📄</div>
+                    <h3 class="card-title">Submit a Document</h3>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdxeiXRuX4gLt3JrCtY4J4uwCVA_mywU20U3wS2Z0RC1zIptw/viewform?usp=header" class="card-btn" target="_blank">📝 Submit a Document</a>
+                </div>
+            </div>
+
+            <div class="made-with-love fade-in">
+                <p>Made with <i class="fa-solid fa-heart"></i> by</p>
+                <div class="tech-logo">
+    <a href="https://nhsm.edu.dz/en/" class="logo-container" target="_blank">
+        <img src="images/logo.png" alt="NHSM Logo" class="logo-image1">
+    </a>
+</div>
+
+
+
+
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-brand">
+            
+            <p class="footer-tagline">NHSM Hub - School Tech Community</p>
+        </div>
+        
+        <div class="footer-links">
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#container1">Search</a></li>
+                    <li><a href="#contribute">Feedback</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="#contribute">Submissions</a></li>
+                    <li><a href="#contribute">Contribute</a></li>
+                    <li><a href="#contribute">Help</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Connect</h3>
+                <ul class="social-links">
+                    <li><a href="https://www.facebook.com/profile.php?id=100083482801386" target="_blank"><i class="fab fa-facebook"></i></a></li>
+                    <li><a href="https://www.instagram.com/stratos_.club/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="https://www.youtube.com/@nhsmdz" target="_blank"><i class="fab fa-youtube"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <p class="copyright">&copy; 2025 NHSM Hub. All rights reserved.</p>
+        <p class="credits">Developed with <i class="fas fa-heart"></i> by Azzouz billel</p>
+    </div>
+</footer>                
+              
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll to search section
+        function scrollToSearch() {
+            document.getElementById('container1').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        }
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.addEventListener('DOMContentLoaded', () => {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            fadeElements.forEach(el => observer.observe(el));
+        });
+
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            const query = e.target.value.toLowerCase();
+            // Add your search logic here
+            console.log('Searching for:', query);
+        });
+
+        // Clear filters function
+        function clearFilters() {
+            const selects = document.querySelectorAll('.filter-select');
+            selects.forEach(select => {
+                select.selectedIndex = 0;
+            });
+            document.getElementById('searchInput').value = '';
+            console.log('Filters cleared');
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add interactive hover effects
+        document.querySelectorAll('.contribute-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Add typing effect to search placeholder
+        function typeEffect() {
+            const searchInput = document.getElementById('searchInput');
+            const phrases = [
+                'Search for Mathematics notes...',
+                'Search for Science experiments...',
+                'Search for Programming tutorials...',
+                'Search for History documents...',
+                'Search for files by name, module, or type...'
+            ];
+            
+            let phraseIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            
+            function type() {
+                const currentPhrase = phrases[phraseIndex];
+                
+                if (isDeleting) {
+                    searchInput.placeholder = currentPhrase.substring(0, charIndex - 1);
+                    charIndex--;
+                } else {
+                    searchInput.placeholder = currentPhrase.substring(0, charIndex + 1);
+                    charIndex++;
+                }
+                
+                if (!isDeleting && charIndex === currentPhrase.length) {
+                    setTimeout(() => isDeleting = true, 2000);
+                } else if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    phraseIndex = (phraseIndex + 1) % phrases.length;
+                }
+                
+                const typeSpeed = isDeleting ? 50 : 100;
+                setTimeout(type, typeSpeed);
+            }
+            
+            type();
+        }
+
+        // Start typing effect after page loads
+        window.addEventListener('load', () => {
+            setTimeout(typeEffect, 2000);
+        });
+    </script>
+</body>
+</html>
