@@ -945,9 +945,6 @@
 
         /* Mobile responsiveness */
         @media (max-width: 768px) {
-            body {
-                padding: 10px;
-            }
 
             .cycle-header {
                 padding: 20px;
@@ -993,3 +990,4 @@
                 min-height: auto;
             }
         }
+
