@@ -461,6 +461,7 @@
         max-width: 400px;
         margin-left: 0;
         margin-right: 0;
+        margin-bottom: -10%;
     }
 
     /* Keep your existing mobile text styles */
@@ -990,6 +991,7 @@
                 min-height: auto;
             }
         }
+
 
 
 
