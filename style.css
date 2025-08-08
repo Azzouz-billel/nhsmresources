@@ -449,7 +449,6 @@
         order: 1; /* Explicitly set image first */
         margin-bottom: 2rem;
     }
-
     .hero-content {
         grid-area: content;
         order: 0; /* Explicitly set text second */
@@ -459,7 +458,7 @@
     /* Adjust image sizing for mobile */
     .hero-image {
         width: 100%;
-        max-width: 280px;
+        max-width: 400px;
         margin-left: 0;
         margin-right: 0;
     }
@@ -774,4 +773,223 @@
         }
         html {
   scroll-behavior: smooth;
+
 }
+  .carousel-container {
+    max-width: 1200px;
+    margin: 200px auto 30px auto; /* top, right, bottom, left */
+    width: 100%;
+    position: relative;
+
+    
+    
+}
+
+        .cycle-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            opacity: 0;
+            transition: opacity 0.4s ease-in-out;
+            position: absolute;
+            width: 100%;
+            min-height: 500px;
+            top: 0;
+            left: 0;
+        }
+
+        .cycle-card.active {
+            opacity: 1;
+            position: relative;
+        }
+
+        .cycle-header {
+            background: linear-gradient(135deg,  rgba(30, 48, 80, 0.95),  rgba(26, 40, 65, 0.95));
+            color: white;
+            padding: 30px;
+            text-align: center;
+            font-size: 28px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .semester-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 400px;
+        }
+
+        .semester {
+            padding: 40px 30px;
+            position: relative;
+        }
+
+        .semester:first-child {
+            border-right: 2px solid #e5e7eb;
+        }
+
+        .semester h3 {
+            font-size: 24px;
+            color: #374151;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 400;
+        }
+
+        .course-list {
+            list-style: none;
+            position: relative;
+              z-index: 9999;
+        }
+
+        .course-item {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            padding-left: 15px;
+            position: relative;
+        }
+
+        .course-item::before {
+            content: '•';
+            color: rgba(30, 48, 80, 0.95);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 20px;
+        }
+
+        .course-link {
+            color: rgba(30, 48, 80, 0.95);
+            text-decoration: none;
+            transition: all 0.2s ease;
+            display: block;
+        }
+
+        .course-link:hover {
+            color:  rgba(30, 48, 80, 0.95);
+            text-decoration: none;
+            transform: translateX(2px);
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 30px;
+            position: relative;
+        }
+
+        .nav-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .nav-button {
+            background: linear-gradient(135deg,  rgba(30, 48, 80, 0.95), rgba(30, 48, 80, 0.95));
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(58, 86, 134, 0.4);
+        }
+
+        .nav-button:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: 0 2px 8px rgba(115, 155, 221, 0.1);
+        }
+
+        .cycle-indicator {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 16px;
+            color: #6b7280;
+        }
+
+        .dots {
+            display: flex;
+            gap: 8px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #d1d5db;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .dot.active {
+            background:  rgba(30, 48, 80, 0.95);
+            transform: scale(1.2);
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .cycle-header {
+                padding: 20px;
+                font-size: 22px;
+            }
+
+            .semester-container {
+                grid-template-columns: 1fr;
+                min-height: auto;
+            }
+
+            .semester:first-child {
+                border-right: none;
+                border-bottom: 2px solid #e5e7eb;
+            }
+
+            .semester {
+                padding: 25px 20px;
+            }
+
+            .semester h3 {
+                font-size: 20px;
+                margin-bottom: 20px;
+            }
+
+            .course-item {
+                font-size: 15px;
+                margin-bottom: 12px;
+            }
+
+            .navigation {
+                margin-top: 20px;
+            }
+
+            .nav-controls {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                align-items: center;
+            }
+
+            .cycle-card {
+                min-height: auto;
+            }
+        }
