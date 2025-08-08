@@ -447,7 +447,7 @@
         grid-area: illustration;
         justify-content: center;
         order: 1; /* Explicitly set image first */
-        margin-bottom: -4rem;
+        margin-bottom: -4.5rem;
     }
     .hero-content {
         grid-area: content;
@@ -990,5 +990,6 @@
                 min-height: auto;
             }
         }
+
 
 
