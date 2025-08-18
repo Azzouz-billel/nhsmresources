@@ -307,7 +307,7 @@
 }
 
 .tech-logo .logo-image1 {
-    height: 25rem; /* Massive logo size */
+    height: 20rem; /* Massive logo size */
     width: auto;
     filter: brightness(0) invert(1); /* White logo */
     transition: all 0.3s ease; /* Smooth hover effects */
@@ -326,7 +326,7 @@
     background: rgba(30, 48, 80, 0.95);
     backdrop-filter: blur(10px);
     color: white;
-    padding: 3rem 0 0;
+    padding: -15% 0 0;
     margin-top: 4rem;
 }
 
@@ -991,6 +991,7 @@
                 min-height: auto;
             }
         }
+
 
 
 
