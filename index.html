@@ -35,6 +35,8 @@
             <a href="https://nhsm.edu.dz/en/" class="logo" target="_blank">
             <img src="images/NHSM.png" alt="Your Logo" class="logo-image">
         </a>
+                <!-- Hamburger menu (only shows on phone) -->
+            <div class="menu-toggle">☰</div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#container1">Search</a></li>
@@ -2677,5 +2679,14 @@
 
   typeEffect();
 </script>
+<script>
+  const menuToggle = document.querySelector(".menu-toggle");
+  const navLinks = document.querySelector(".nav-links");
+
+  menuToggle.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
+  });
+</script>
+
 </body>
 </html>
